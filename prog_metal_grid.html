@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progressive Metal — Essential Albums Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:      #060608;
+  --gold:    #c9a84c;
+  --text:    #ccc8be;
+  --muted:   #44404e;
+  --white:   #f0ece4;
+
+  --c-origin:    #c0402a;
+  --c-birth:     #2a6bbb;
+  --c-classic:   #2a9e5c;
+  --c-expansion: #8a2eb8;
+  --c-modern:    #bb892a;
+}
+
+html, body { background: var(--bg); color: var(--text); }
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  padding: 48px 24px 32px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.07) 0%, transparent 60%);
+  border-bottom: 1px solid #111118;
+  position: relative;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.eyebrow {
+  font-size: 9px; letter-spacing: 5px;
+  color: var(--gold); opacity: .6;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 80px);
+  letter-spacing: 5px; line-height: .92;
+  color: var(--white);
+}
+h1 span { color: var(--gold); }
+.subtitle {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; font-size: 15px;
+  color: var(--muted); margin-top: 12px;
+}
+
+/* ── ERA LEGEND ── */
+.legend {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 6px 22px;
+  padding: 14px 24px;
+  background: #08080c;
+  border-bottom: 1px solid #111118;
+}
+.leg-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted);
+}
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* ── ERA SECTION ── */
+.era-section {
+  padding: 36px 20px 8px;
+}
+.era-title {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 16px;
+}
+.era-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--ec); opacity: .25;
+}
+.era-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px; letter-spacing: 4px;
+  color: var(--ec);
+  white-space: nowrap;
+}
+.era-years {
+  font-size: 8px; letter-spacing: 2px;
+  color: var(--muted); white-space: nowrap;
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 3px;
+}
+
+/* ── ALBUM CELL ── */
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0d0d14;
+  border: 2px solid transparent;
+  transition: border-color .15s, transform .15s, z-index 0s;
+}
+.cell:hover {
+  border-color: var(--ec, var(--gold));
+  transform: scale(1.04);
+  z-index: 10;
+}
+
+/* cover image */
+.cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .4s;
+  opacity: 0;
+}
+.cell img.loaded { opacity: 1; }
+
+/* placeholder */
+.placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8px; gap: 3px;
+  background: #0d0d14;
+  transition: opacity .3s;
+}
+.placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--ec, var(--gold));
+}
+.ph-band {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 9px; letter-spacing: 1px;
+  color: var(--ec, var(--gold));
+  text-align: center; line-height: 1.2;
+}
+.ph-album {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; font-size: 7px;
+  color: var(--muted); text-align: center;
+  line-height: 1.3;
+}
+.placeholder.hidden { opacity: 0; pointer-events: none; }
+
+/* ── TOOLTIP ── */
+.tooltip {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(6,6,8,.92);
+  padding: 7px 8px 8px;
+  transform: translateY(100%);
+  transition: transform .18s ease;
+  border-top: 1px solid var(--ec, var(--gold));
+  pointer-events: none;
+  z-index: 20;
+}
+.cell:hover .tooltip { transform: translateY(0); }
+.tt-band {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px;
+  color: var(--white); line-height: 1;
+}
+.tt-album {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; font-size: 10px;
+  color: var(--ec, var(--gold)); margin-top: 1px;
+  line-height: 1.3;
+}
+.tt-year {
+  font-size: 8px; letter-spacing: 1px;
+  color: var(--muted); margin-top: 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 8px; letter-spacing: 2px;
+  color: var(--muted);
+  border-top: 1px solid #111118;
+  margin-top: 32px;
+}
+
+/* Loading spinner in corner */
+#loader {
+  position: fixed; bottom: 16px; right: 16px;
+  font-size: 8px; letter-spacing: 2px;
+  color: var(--gold); opacity: .5;
+  transition: opacity .5s;
+}
+#loader.done { opacity: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Essential Discography · 1969 – Present</p>
+  <h1>PROGRESSIVE<br><span>METAL</span></h1>
+  <p class="subtitle">Every key album — origins, birth, golden age, expansion & modern era</p>
+</header>
+
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--c-origin)"></div> Origin / Proto (1969–83)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--c-birth)"></div> Birth (1984–89)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--c-classic)"></div> Classic Era (1989–97)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--c-expansion)"></div> Expansion (1995–2008)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--c-modern)"></div> Modern (2007–present)</div>
+</div>
+
+<div id="app"></div>
+
+<div id="loader">LOADING COVERS…</div>
+
+<footer>
+  Progressive Metal — Essential Albums Grid &nbsp;·&nbsp; Cover art via MusicBrainz Cover Art Archive &nbsp;·&nbsp; Hover for details
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  ALBUM DATABASE — all albums from full research
+// ════════════════════════════════════════════════════════
+const ERAS = [
+  {
+    id: 'origin',
+    name: 'ORIGIN',
+    years: '1969 — 1983',
+    col: 'var(--c-origin)',
+    albums: [
+      { band:'King Crimson',     album:'In the Court of the Crimson King', year:1969 },
+      { band:'Black Sabbath',    album:'Black Sabbath',                    year:1970 },
+      { band:'Black Sabbath',    album:'Paranoid',                         year:1970 },
+      { band:'Black Sabbath',    album:'Master of Reality',                year:1971 },
+      { band:'Yes',              album:'Close to the Edge',                year:1972 },
+      { band:'Genesis',          album:'Selling England by the Pound',     year:1973 },
+      { band:'Emerson Lake & Palmer', album:'Brain Salad Surgery',        year:1973 },
+      { band:'King Crimson',     album:'Red',                              year:1974 },
+      { band:'Black Sabbath',    album:'Sabotage',                         year:1975 },
+      { band:'Rush',             album:'2112',                             year:1976 },
+      { band:'Rush',             album:'Hemispheres',                      year:1978 },
+      { band:'Rush',             album:'Permanent Waves',                  year:1980 },
+      { band:'Rush',             album:'Moving Pictures',                  year:1981 },
+      { band:'Iron Maiden',      album:'Iron Maiden',                      year:1980 },
+      { band:'Iron Maiden',      album:'The Number of the Beast',          year:1982 },
+      { band:'Black Sabbath',    album:'Heaven and Hell',                  year:1980 },
+      { band:'Black Sabbath',    album:'Mob Rules',                        year:1981 },
+      { band:'Dio',              album:'Holy Diver',                       year:1983 },
+    ]
+  },
+  {
+    id: 'birth',
+    name: 'BIRTH',
+    years: '1984 — 1989',
+    col: 'var(--c-birth)',
+    albums: [
+      { band:'Fates Warning',    album:'Night on Bröcken',                 year:1984 },
+      { band:'Fates Warning',    album:'The Spectre Within',               year:1985 },
+      { band:'Watchtower',       album:'Energetic Disassembly',            year:1985 },
+      { band:'Fates Warning',    album:'Awaken the Guardian',              year:1986 },
+      { band:'Crimson Glory',    album:'Crimson Glory',                    year:1986 },
+      { band:'Queensryche',      album:'Rage for Order',                   year:1986 },
+      { band:'Crimson Glory',    album:'Transcendence',                    year:1988 },
+      { band:'Queensryche',      album:'Operation Mindcrime',              year:1988 },
+      { band:'Voivod',           album:'Killing Technology',               year:1987 },
+      { band:'Voivod',           album:'Dimension Hatross',                year:1988 },
+      { band:'Voivod',           album:'Nothingface',                      year:1989 },
+      { band:'Watchtower',       album:'Control and Resistance',           year:1989 },
+      { band:'Fates Warning',    album:'No Exit',                          year:1988 },
+    ]
+  },
+  {
+    id: 'classic',
+    name: 'CLASSIC ERA',
+    years: '1989 — 1997',
+    col: 'var(--c-classic)',
+    albums: [
+      { band:'Atheist',          album:'Piece of Time',                    year:1990 },
+      { band:'Atheist',          album:'Unquestionable Presence',          year:1991 },
+      { band:'Death',            album:'Human',                            year:1991 },
+      { band:'Fates Warning',    album:'Parallels',                        year:1991 },
+      { band:'Queensryche',      album:'Empire',                           year:1990 },
+      { band:'Dream Theater',    album:'Images and Words',                 year:1992 },
+      { band:'Cynic',            album:'Focus',                            year:1993 },
+      { band:'Death',            album:'Individual Thought Patterns',      year:1993 },
+      { band:'Dream Theater',    album:'Awake',                            year:1994 },
+      { band:'Atheist',          album:'Elements',                         year:1993 },
+      { band:'Death',            album:'Symbolic',                         year:1995 },
+      { band:'Symphony X',       album:'The Divine Wings of Tragedy',      year:1997 },
+      { band:'Dream Theater',    album:'A Change of Seasons',              year:1995 },
+      { band:'Dream Theater',    album:'Falling into Infinity',            year:1997 },
+      { band:'Fates Warning',    album:'A Pleasant Shade of Gray',         year:1997 },
+      { band:'Symphony X',       album:'The Damnation Game',               year:1995 },
+      { band:'Savatage',         album:'Edge of Thorns',                   year:1993 },
+    ]
+  },
+  {
+    id: 'expansion',
+    name: 'EXPANSION',
+    years: '1995 — 2008',
+    col: 'var(--c-expansion)',
+    albums: [
+      { band:'Tool',             album:'Aenima',                           year:1996 },
+      { band:'Opeth',            album:'Morningrise',                      year:1996 },
+      { band:'Opeth',            album:'My Arms Your Hearse',              year:1998 },
+      { band:'Ayreon',           album:'Into the Electric Castle',         year:1998 },
+      { band:'Opeth',            album:'Still Life',                       year:1999 },
+      { band:'Pain of Salvation',album:'The Perfect Element Part I',       year:2000 },
+      { band:'Opeth',            album:'Blackwater Park',                  year:2001 },
+      { band:'Tool',             album:'Lateralus',                        year:2001 },
+      { band:'Pain of Salvation',album:'Remedy Lane',                      year:2002 },
+      { band:'Porcupine Tree',   album:'In Absentia',                      year:2002 },
+      { band:'Devin Townsend',   album:'Ocean Machine Biomech',            year:1997 },
+      { band:'Devin Townsend',   album:'Terria',                           year:2001 },
+      { band:'Devin Townsend',   album:'Accelerated Evolution',            year:2003 },
+      { band:'Meshuggah',        album:'Destroy Erase Improve',            year:1995 },
+      { band:'Meshuggah',        album:'Chaosphere',                       year:1998 },
+      { band:'Meshuggah',        album:'Nothing',                          year:2002 },
+      { band:'Porcupine Tree',   album:'Deadwing',                         year:2005 },
+      { band:'Dream Theater',    album:'Metropolis Part 2 Scenes from a Memory', year:1999 },
+      { band:'Dream Theater',    album:'Six Degrees of Inner Turbulence',  year:2002 },
+      { band:'Symphony X',       album:'V The New Mythology Suite',        year:2000 },
+      { band:'Pain of Salvation',album:'Be',                               year:2004 },
+      { band:'Porcupine Tree',   album:'Fear of a Blank Planet',           year:2007 },
+      { band:'Meshuggah',        album:'ObZen',                            year:2008 },
+      { band:'Opeth',            album:'Ghost Reveries',                   year:2005 },
+      { band:'Riverside',        album:'Second Life Syndrome',             year:2005 },
+      { band:'Tool',             album:'10000 Days',                       year:2006 },
+      { band:'Ayreon',           album:'The Human Equation',               year:2004 },
+      { band:'Fates Warning',    album:'FWX',                              year:2004 },
+      { band:'Isis',             album:'Panopticon',                       year:2004 },
+    ]
+  },
+  {
+    id: 'modern',
+    name: 'MODERN ERA',
+    years: '2007 — Present',
+    col: 'var(--c-modern)',
+    albums: [
+      { band:'Between the Buried and Me', album:'Colors',                 year:2007 },
+      { band:'Devin Townsend Project', album:'Addicted',                  year:2009 },
+      { band:'Periphery',        album:'Periphery',                        year:2010 },
+      { band:'Animals as Leaders', album:'Animals as Leaders',            year:2009 },
+      { band:'Haken',            album:'Visions',                          year:2011 },
+      { band:'Opeth',            album:'Heritage',                         year:2011 },
+      { band:'Leprous',          album:'Bilateral',                        year:2011 },
+      { band:'Animals as Leaders', album:'The Joy of Motion',             year:2014 },
+      { band:'Haken',            album:'The Mountain',                     year:2013 },
+      { band:'Periphery',        album:'Juggernaut Alpha',                 year:2015 },
+      { band:'Leprous',          album:'Coal',                             year:2013 },
+      { band:'Riverside',        album:'Anno Domini High Definition',      year:2009 },
+      { band:'Between the Buried and Me', album:'The Parallax II Future Sequence', year:2012 },
+      { band:'Caligula\'s Horse', album:'In Contact',                      year:2017 },
+      { band:'Leprous',          album:'Malina',                           year:2017 },
+      { band:'Haken',            album:'Affinity',                         year:2016 },
+      { band:'Dream Theater',    album:'A Dramatic Turn of Events',        year:2011 },
+      { band:'Devin Townsend Project', album:'Transcendence',             year:2016 },
+      { band:'Tool',             album:'Fear Inoculum',                    year:2019 },
+      { band:'Caligula\'s Horse', album:'Rise Radiant',                    year:2020 },
+      { band:'Leprous',          album:'Aphelion',                         year:2021 },
+      { band:'Haken',            album:'Virus',                            year:2020 },
+      { band:'Persefone',        album:'Aathma',                           year:2017 },
+      { band:'Opeth',            album:'In Cauda Venenum',                 year:2019 },
+    ]
+  }
+];
+
+// ════════════════════════════════════════════════════════
+//  RENDER SKELETON
+// ════════════════════════════════════════════════════════
+const app = document.getElementById('app');
+
+ERAS.forEach(era => {
+  const sec = document.createElement('div');
+  sec.className = 'era-section';
+
+  sec.innerHTML = `
+    <div class="era-title" style="--ec:${era.col}">
+      <span class="era-name">${era.name}</span>
+      <span class="era-years">${era.years}</span>
+    </div>
+    <div class="grid" id="grid-${era.id}"></div>
+  `;
+  app.appendChild(sec);
+
+  const grid = sec.querySelector(`#grid-${era.id}`);
+
+  era.albums.forEach(a => {
+    const safe = s => s.replace(/'/g,"'").replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.style.setProperty('--ec', era.col);
+    cell.dataset.artist = a.band;
+    cell.dataset.album  = a.album;
+    cell.dataset.year   = a.year;
+    cell.dataset.col    = era.col;
+
+    const shortBand  = a.band.length  > 16 ? a.band.slice(0,14)+'…'  : a.band;
+    const shortAlbum = a.album.length > 20 ? a.album.slice(0,18)+'…' : a.album;
+
+    cell.innerHTML = `
+      <div class="placeholder">
+        <span class="ph-band">${safe(shortBand)}</span>
+        <span class="ph-album">${safe(shortAlbum)}</span>
+      </div>
+      <img alt="${safe(a.band)} — ${safe(a.album)}">
+      <div class="tooltip">
+        <div class="tt-band">${safe(a.band)}</div>
+        <div class="tt-album">${safe(a.album)}</div>
+        <div class="tt-year">${a.year}</div>
+      </div>
+    `;
+    grid.appendChild(cell);
+  });
+});
+
+// ════════════════════════════════════════════════════════
+//  ALBUM ART — loaded from local covers/ folder.
+//  Run download_covers.py once to populate covers/.
+//  Slug = same formula used in download_covers.py:
+//    (band + '-' + album).toLowerCase()
+//    .replace spaces→_ / slashes→_ / colons removed
+//    / apostrophes removed / &→and, truncated to 50 chars
+// ════════════════════════════════════════════════════════
+
+function makeSlug(band, album) {
+  return (band + '-' + album)
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[:/]/g, '')
+    .replace(/'/g, '')
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_\-]/g, '')
+    .slice(0, 50);
+}
+
+function applyLocalImage(cell) {
+  const band  = cell.dataset.artist;
+  const album = cell.dataset.album;
+  const slug  = makeSlug(band, album);
+  const img   = cell.querySelector('img');
+  const ph    = cell.querySelector('.placeholder');
+  if (!img) return;
+  img.onload  = () => { img.classList.add('loaded'); if (ph) ph.classList.add('hidden'); };
+  img.onerror = () => {}; // keep styled placeholder if file missing
+  img.src = `covers/${slug}.jpg`;
+}
+
+const loader = document.getElementById('loader');
+const cells  = Array.from(document.querySelectorAll('.cell'));
+cells.forEach(applyLocalImage);
+if (loader) { loader.textContent = `${cells.length} COVERS`; setTimeout(() => loader.classList.add('done'), 2500); }
+</script>
+</body>
+</html>

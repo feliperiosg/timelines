@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progressive Metal — A Complete History</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:       #08080e;
+  --panel:    #0e0e18;
+  --border:   #1e1e2e;
+  --gold:     #c9a84c;
+  --gold2:    #e8c96a;
+  --text:     #ccc8be;
+  --muted:    #55505e;
+  --white:    #f2ede4;
+  --c-origin:    #c0402a;
+  --c-birth:     #2a6bbb;
+  --c-classic:   #2a9e5c;
+  --c-expansion: #8a2eb8;
+  --c-modern:    #bb892a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+/* ═══════════════════════════ HEADER ═══════════════════════════ */
+.hdr {
+  position: relative;
+  padding: 64px 60px 48px;
+  text-align: center;
+  background: linear-gradient(175deg, #110818 0%, #08080e 60%);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.hdr::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hdr-eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 6px;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 20px; opacity: .7;
+}
+.hdr h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 88px; letter-spacing: 6px; line-height: .9;
+  color: var(--white);
+  text-shadow: 0 0 100px rgba(201,168,76,.15);
+}
+.hdr h1 em { color: var(--gold); font-style: normal; }
+.hdr-sub {
+  margin-top: 18px;
+  font-style: italic; font-size: 16px;
+  color: var(--muted); letter-spacing: .5px;
+}
+.hdr-rule {
+  width: 60px; height: 1px;
+  background: var(--gold); opacity: .4;
+  margin: 22px auto 0;
+}
+
+/* ═══════════════════════════ LEGEND ═══════════════════════════ */
+.legend {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 8px 28px;
+  padding: 16px 40px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+.legend-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted);
+}
+.ldot {
+  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ═══════════════════════════ TIMELINE ═══════════════════════════ */
+.timeline {
+  position: relative;
+  padding: 0 40px;
+}
+/* The vertical gold line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 88px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    var(--gold) 3%,
+    var(--gold) 97%,
+    transparent 100%);
+  opacity: .18;
+}
+
+/* ═══════════════════════════ ERA DIVIDER ═══════════════════════════ */
+.era-divider {
+  position: relative;
+  margin: 52px 0 0;
+  padding-left: 108px;
+}
+.era-divider::before {
+  content: '';
+  position: absolute;
+  left: 82px; top: 26px;
+  width: 16px; height: 16px;
+  background: var(--era-col);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--era-col);
+  z-index: 2;
+}
+.era-inner {
+  border-left: 3px solid var(--era-col);
+  padding: 14px 20px 14px 22px;
+  background: linear-gradient(90deg, rgba(255,255,255,.025) 0%, transparent 100%);
+}
+.era-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 4px;
+  color: var(--era-col); line-height: 1;
+}
+.era-years {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--muted); margin-top: 3px; display: block;
+}
+.era-blurb {
+  font-style: italic; font-size: 13px;
+  color: var(--muted); margin-top: 8px;
+  line-height: 1.65; max-width: 620px;
+}
+
+/* ═══════════════════════════ ENTRY ═══════════════════════════ */
+.entry {
+  position: relative;
+  display: flex;
+  gap: 0;
+  margin-top: 28px;
+  padding-left: 108px;
+  align-items: flex-start;
+}
+/* Timeline node dot */
+.entry::before {
+  content: '';
+  position: absolute;
+  left: 84px; top: 22px;
+  width: 8px; height: 8px;
+  background: var(--era-col, var(--gold));
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  z-index: 2;
+}
+/* Year label left of dot */
+.entry-year {
+  position: absolute;
+  left: 0; top: 18px;
+  width: 78px; text-align: right;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--muted);
+  padding-right: 8px;
+}
+
+/* Album cover art */
+.cover {
+  flex-shrink: 0;
+  width: 88px; height: 88px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  position: relative;
+  margin-right: 16px;
+}
+.cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cover-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 4px;
+  padding: 8px;
+  position: relative;
+}
+.cover-placeholder .cp-band {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 9px; letter-spacing: 1px;
+  color: var(--ph-col, var(--gold));
+  text-align: center; line-height: 1.2;
+  z-index: 1;
+}
+.cover-placeholder .cp-album {
+  font-style: italic; font-size: 7.5px;
+  color: var(--muted); text-align: center; line-height: 1.3;
+  z-index: 1;
+}
+.cover-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--ph-col, var(--gold));
+}
+
+/* Entry card */
+.card {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 13px 16px 14px;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0; width: 3px;
+  background: var(--era-col, var(--gold));
+  opacity: .55;
+}
+.card-head {
+  display: flex; align-items: baseline;
+  gap: 10px; flex-wrap: wrap;
+}
+.card-band {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 2px;
+  color: var(--white); line-height: 1;
+}
+.card-album {
+  font-style: italic; font-size: 13.5px;
+  color: var(--gold2); line-height: 1.2;
+}
+.card-tags {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-top: 7px;
+}
+.tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px; letter-spacing: 1.5px;
+  padding: 2px 7px; border-radius: 2px; border: 1px solid;
+  text-transform: uppercase;
+}
+.tag-key     { border-color: var(--gold);  color: var(--gold);  background: rgba(201,168,76,.07); }
+.tag-sub     { border-color: var(--muted); color: var(--muted); background: transparent; }
+.tag-warn    { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
+.card-note {
+  font-size: 13px; line-height: 1.65;
+  color: var(--text); margin-top: 8px;
+}
+
+/* ═══════════════════════════ SUB-GENRE HEADER ═══════════════════════════ */
+.sub-header {
+  position: relative;
+  padding-left: 108px;
+  margin-top: 38px; margin-bottom: 4px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sub-header-line {
+  flex: 1; height: 1px;
+  background: var(--sub-col, var(--muted));
+  opacity: .25;
+}
+.sub-header-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: 3px;
+  color: var(--sub-col, var(--muted));
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════ ANNOTATION ═══════════════════════════ */
+.annotation {
+  margin: 20px 0 0;
+  padding-left: 108px;
+}
+.annotation-inner {
+  background: rgba(192,48,48,.05);
+  border: 1px dashed rgba(192,48,48,.2);
+  border-radius: 3px;
+  padding: 12px 18px;
+  font-size: 12.5px; font-style: italic;
+  color: var(--muted); line-height: 1.65;
+}
+.annotation-inner strong {
+  font-style: normal;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: #c03030; display: block; margin-bottom: 5px;
+}
+
+/* ═══════════════════════════ CORRECTIONS ═══════════════════════════ */
+.corrections {
+  margin: 56px 0 0;
+  background: rgba(192,48,48,.04);
+  border: 1px solid rgba(192,48,48,.18);
+  border-radius: 3px;
+  padding: 22px 26px;
+}
+.corrections h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 3px;
+  color: #c03030; margin-bottom: 16px;
+}
+.corr-row {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr;
+  gap: 6px 8px;
+  margin-bottom: 12px;
+  font-size: 12.5px; line-height: 1.55;
+  align-items: start;
+}
+.corr-wrong { color: #6a3535; font-style: italic; }
+.corr-arr   { color: var(--muted); text-align: center; padding-top: 1px; }
+.corr-right { color: var(--text); }
+
+/* ═══════════════════════════ FOOTER ═══════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 22px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--muted);
+  background: var(--panel);
+  margin-top: 60px;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="hdr">
+  <p class="hdr-eyebrow">An Annotated History &nbsp;·&nbsp; 1969 – Present</p>
+  <h1>PROGRESSIVE<br><em>METAL</em></h1>
+  <p class="hdr-sub">From King Crimson to Periphery — Origins, Lineage &amp; Key Albums</p>
+  <div class="hdr-rule"></div>
+</div>
+
+<!-- ══════════ LEGEND ══════════ -->
+<div class="legend">
+  <div class="legend-item"><div class="ldot" style="background:var(--c-origin)"></div>Origin / Proto</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--c-birth)"></div>Birth</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--c-classic)"></div>Classic Era</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--c-expansion)"></div>Expansion</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--c-modern)"></div>Modern Era</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--gold)"></div>Key / Foundational Album</div>
+  <div class="legend-item"><div class="ldot" style="background:#c03030"></div>Omitted / Underserved by video</div>
+</div>
+
+<!-- ══════════ TIMELINE ══════════ -->
+<div class="timeline">
+
+<!-- ─────────── ERA 1 · ORIGIN ─────────── -->
+<div class="era-divider" style="--era-col: var(--c-origin)">
+  <div class="era-inner">
+    <span class="era-name">ORIGIN</span>
+    <span class="era-years">1969 — 1983 &nbsp;·&nbsp; Proto-Metal &amp; Prog Rock DNA</span>
+    <p class="era-blurb">Progressive metal did not emerge from a vacuum. Its double helix was woven by two parallel strands: the compositional ambition of 1970s British prog rock, and the raw heaviness of early heavy metal. These are the essential ancestors.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1969</span>
+  <div class="cover" id="cov-kc"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">KING CRIMSON</span>
+      <span class="card-album">In the Court of the Crimson King</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Genesis Album</span>
+      <span class="tag tag-sub">Progressive Rock</span>
+    </div>
+    <p class="card-note">The Big Bang. Complex time signatures, literary concept, orchestral ambition — every prog metal band traces a direct bloodline back here. Robert Fripp's dissonant guitar and the band's refusal of conventional rock structure set the template for everything that followed.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1970–72</span>
+  <div class="cover" id="cov-sabbath"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">BLACK SABBATH</span>
+      <span class="card-album">Black Sabbath · Paranoid · Master of Reality</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Heaviness Pillar</span>
+      <span class="tag tag-sub">Heavy Metal</span>
+    </div>
+    <p class="card-note">Tony Iommi invented the down-tuned riff, the doomy atmosphere, the slow-crawl dynamics. Sabbath's operatic darkness and thematic gravity became one of prog metal's core ingredients. Without their heaviness, the genre is unimaginable.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1972–73</span>
+  <div class="cover" id="cov-yes"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">YES · ELP · GENESIS</span>
+      <span class="card-album">Close to the Edge · Brain Salad Surgery · Selling England by the Pound</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Structural Vocabulary</span>
+      <span class="tag tag-sub">British Progressive Rock</span>
+    </div>
+    <p class="card-note">The compositional grammar that prog metal would inherit wholesale: suite-length multi-movement works, shifting meters, concept albums, classical and jazz influences, and instrumental virtuosity as a primary value rather than an afterthought.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1976</span>
+  <div class="cover" id="cov-rush"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">RUSH</span>
+      <span class="card-album">2112</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Critical Bridge</span>
+      <span class="tag tag-sub">Progressive Rock</span>
+      <span class="tag tag-sub">Hard Rock</span>
+    </div>
+    <p class="card-note">The essential bridge album: prog rock's compositional complexity married to hard rock's aggression. Conceptual side-long suites alongside driving riff-based songs. Rush proved the two worlds could not only coexist but amplify one another. Note: Rush are prog rock, not prog metal proper — their role here is as crucial influence, not practitioner.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1980–82</span>
+  <div class="cover" id="cov-maiden"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">IRON MAIDEN</span>
+      <span class="card-album">Iron Maiden · The Number of the Beast</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">NWOBHM Epic Form</span>
+      <span class="tag tag-sub">Heavy Metal</span>
+    </div>
+    <p class="card-note">The NWOBHM (New Wave of British Heavy Metal) energy fused with literary ambition. Galloping rhythms, twin-guitar harmonies, and crucially the extended epic composition as legitimate heavy metal form. <em>Hallowed Be Thy Name</em>, <em>Rime of the Ancient Mariner</em> — metal could be structurally ambitious and thematically literary.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-origin)">
+  <span class="entry-year">1980–83</span>
+  <div class="cover" id="cov-sabbath-dio"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">BLACK SABBATH (Dio era)</span>
+      <span class="card-album">Heaven and Hell · Mob Rules</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Theatrical Architecture</span>
+      <span class="tag tag-sub">Heavy Metal</span>
+    </div>
+    <p class="card-note">The Dio-fronted Sabbath raised the compositional and theatrical ceiling. Mythological lyrics, dynamic song architecture with deliberate structural shifts, and Dio's operatic vocal delivery — a direct template for the power and symphonic prog-metal wings.</p>
+  </div>
+</div>
+
+<!-- ─────────── ERA 2 · BIRTH ─────────── -->
+<div class="era-divider" style="--era-col: var(--c-birth)">
+  <div class="era-inner">
+    <span class="era-name">BIRTH</span>
+    <span class="era-years">1984 — 1989 &nbsp;·&nbsp; The Genre Is Named</span>
+    <p class="era-blurb">Mid-1980s American bands synthesised the prog and metal inheritances into something genuinely new — extended compositions, complex harmony, odd time signatures, and operatic singing over proper metal heaviness. Progressive metal as a distinct genre was born primarily in Connecticut and Arizona.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1984–85</span>
+  <div class="cover" id="cov-fw-spectre"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">FATES WARNING</span>
+      <span class="card-album">Night on Bröcken · The Spectre Within</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-sub">Proto Progressive Metal</span>
+      <span class="tag tag-sub">US Power Metal</span>
+    </div>
+    <p class="card-note">The early Fates Warning records bridged US power metal with progressive ambition — still raw, still tinged with NWOBHM energy, but already showing Jim Matheos's instinct for complex riffing and John Arch's extraordinary operatic phrasing over extended song structures.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1986</span>
+  <div class="cover" id="cov-fw-guardian"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">FATES WARNING</span>
+      <span class="card-album">Awaken the Guardian</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">The Founding Text</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">Widely regarded as the first true progressive metal album. Jim Matheos's harmonically complex riffing, John Arch's stratospheric operatic voice, extended multi-movement compositions — the template was set. The genre had its genesis record. Everything that came after is in conversation with this album.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1985–89</span>
+  <div class="cover" id="cov-watchtower"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">WATCHTOWER</span>
+      <span class="card-album">Energetic Disassembly · Control and Resistance</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Technical Wing</span>
+      <span class="tag tag-sub">Tech Thrash</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">From Austin, Texas — Watchtower pushed the technical envelope to an extreme few had imagined. Dissonant, angular, ferociously complex polyrhythmic structures. <em>Control and Resistance</em> (1989) remains one of the most demanding and innovative records in the metal canon: the founding text of technical progressive metal.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1986–88</span>
+  <div class="cover" id="cov-qr"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">QUEENSRŸCHE</span>
+      <span class="card-album">Rage for Order · Operation: Mindcrime</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Concept Album Peak</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Hard Rock</span>
+    </div>
+    <p class="card-note"><em>Operation: Mindcrime</em> (1988) demonstrated that progressive metal concept albums of genuine literary and musical ambition could reach a wide audience. A dystopian rock opera executed with precision, it gave the genre its first mainstream landmark and its most convincing proof of concept.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1986–88</span>
+  <div class="cover" id="cov-cg"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">CRIMSON GLORY</span>
+      <span class="card-album">Crimson Glory · Transcendence</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-sub">Progressive Power Metal</span>
+      <span class="tag tag-warn">Chronically Underrated</span>
+    </div>
+    <p class="card-note">Midnight's extraordinary operatic tenor, soaring melodic structures, and progressive dynamics made Crimson Glory a genuine peer to Fates Warning and Queensrÿche — and an unjustly overlooked one. <em>Transcendence</em> (1988) is a forgotten masterpiece of early prog metal.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-birth)">
+  <span class="entry-year">1987–89</span>
+  <div class="cover" id="cov-voivod"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">VOIVOD</span>
+      <span class="card-album">Killing Technology · Dimension Hatross · Nothingface</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Sci-Fi Prog Metal</span>
+      <span class="tag tag-sub">Avant-Garde</span>
+      <span class="tag tag-sub">Thrash</span>
+      <!-- <span class="tag tag-warn">Absent from Video</span> -->
+    </div>
+    <p class="card-note">From Québec — Voivod's dissonant, science-fiction-drenched prog-thrash was utterly singular. Snake's conceptual lyrics, Piggy's harmonic dissonance, and Blacky's thunderous bass created a uniquely alien world. <em>Dimension Hatross</em> (1988) is one of the genre's towering achievements and the video's most significant omission in this era.</p>
+  </div>
+</div>
+
+<div class="annotation">
+  <div class="annotation-inner">
+    <strong>⚠ Video Blind Spot — Birth Era</strong>
+    The source video significantly underweights Voivod. <em>Dimension Hatross</em> (1988) and <em>Nothingface</em> (1989) are essential progressive metal texts. Comment sections on the original video consistently flag this as the era's most glaring omission.
+  </div>
+</div>
+
+<!-- ─────────── ERA 3 · CLASSIC ERA ─────────── -->
+<div class="era-divider" style="--era-col: var(--c-classic)">
+  <div class="era-inner">
+    <span class="era-name">CLASSIC ERA</span>
+    <span class="era-years">1989 — 1997 &nbsp;·&nbsp; The Genre Crystallises</span>
+    <p class="era-blurb">A golden age. Progressive metal found its identity, its audience, and its canonical texts. Dream Theater arrived and defined the sound for a generation. Simultaneously, a more extreme wing fused prog with death metal — seeding the next great mutation of the genre.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1988–91</span>
+  <div class="cover" id="cov-fw-parallels"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">FATES WARNING</span>
+      <span class="card-album">No Exit · Parallels</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Mature Evolution</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">With Russ Anderson replacing John Arch, Fates Warning evolved toward a more melodic, modern sound without sacrificing compositional depth. <em>Parallels</em> (1991) is their most accessible and commercially successful record — a masterpiece of melodic progressive metal.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #c03030">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Progressive Death Metal Wing — Origins</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1989–91</span>
+  <div class="cover" id="cov-atheist"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">ATHEIST</span>
+      <span class="card-album">Piece of Time · Unquestionable Presence</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Prog-Death Pillar</span>
+      <span class="tag tag-sub">Progressive Death Metal</span>
+      <!-- <span class="tag tag-warn">Underserved by Video</span> -->
+    </div>
+    <p class="card-note"><em>Unquestionable Presence</em> (1991) — jazz-inflected rhythms, abstract harmonic structures, death metal heaviness. Atheist created progressive death metal before anyone had the language to describe it. Their influence on everyone from Cynic to Opeth is incalculable.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1991–95</span>
+  <div class="cover" id="cov-death"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">DEATH</span>
+      <span class="card-album">Human · Individual Thought Patterns · Symbolic</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Progressive Death Evolution</span>
+      <span class="tag tag-sub">Progressive Death Metal</span>
+    </div>
+    <p class="card-note">Chuck Schuldiner's arc from pure death metal to progressive complexity is one of music's great artistic journeys. <em>Human</em> (1991) — featuring members of Cynic — introduced a musicianship and compositional ambition that redefined what death metal could aspire to become.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1993</span>
+  <div class="cover" id="cov-cynic"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">CYNIC</span>
+      <span class="card-album">Focus</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Genre Masterpiece</span>
+      <span class="tag tag-sub">Progressive Death Metal</span>
+      <span class="tag tag-sub">Jazz Fusion Metal</span>
+      <span class="tag tag-warn">Inadequately Treated</span>
+    </div>
+    <p class="card-note">One of the genre's singular achievements. <em>Focus</em> fused death metal, jazz-fusion voicings, vocoder effects, and Eastern scales into something unprecedented. Its influence on technical and progressive metal is incalculable — and the video's treatment of this album is one of its worst failures. This is not a peripheral work.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #2a9e5c">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Progressive Metal Mainstream</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1992</span>
+  <div class="cover" id="cov-dt-iaw"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">DREAM THEATER</span>
+      <span class="card-album">Images and Words</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Genre-Defining</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">The album that brought progressive metal to mainstream consciousness. Petrucci's technique, LaBrie's voice, Moore's keyboards. <em>Pull Me Under</em> reached MTV; <em>Metropolis Pt. 1</em> redefined what a metal instrumental could be. The genre had its flagship act — and a template that would shape an entire generation of musicians.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1994</span>
+  <div class="cover" id="cov-dt-awake"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">DREAM THEATER</span>
+      <span class="card-album">Awake</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-key">Heavier Turn</span>
+    </div>
+    <p class="card-note">Darker, heavier, more complex — <em>Awake</em> demonstrated the band's refusal to repeat themselves. Its emotional weight and technical ambition make it one of prog metal's most significant records, and it marked the beginning of the band's most creatively fertile period.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1994–97</span>
+  <div class="cover" id="cov-sx"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">SYMPHONY X</span>
+      <span class="card-album">The Divine Wings of Tragedy · V: The New Mythology Suite</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Neo-Classical Zenith</span>
+      <span class="tag tag-sub">Symphonic Progressive Metal</span>
+      <span class="tag tag-warn">Underrepresented</span>
+    </div>
+    <p class="card-note">Michael Romeo's neo-classical guitar pyrotechnics combined with Russell Allen's powerful vocals and a genuinely symphonic compositional approach. <em>The Divine Wings of Tragedy</em> (1997) is a crowning achievement of the genre's classical-influenced wing — largely absent from the source video.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-classic)">
+  <span class="entry-year">1997</span>
+  <div class="cover" id="cov-fw-apsg"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">FATES WARNING</span>
+      <span class="card-album">A Pleasant Shade of Gray</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Single-Work Ambition</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">An entire album as one 58-minute composition — no track separations. Psychologically dense, emotionally devastating, and structurally radical. A high-water mark of progressive metal's ambition and artistic seriousness, standing as one of the genre's defining statements.</p>
+  </div>
+</div>
+
+<!-- ─────────── ERA 4 · EXPANSION ─────────── -->
+<div class="era-divider" style="--era-col: var(--c-expansion)">
+  <div class="era-inner">
+    <span class="era-name">EXPANSION</span>
+    <span class="era-years">1995 — 2008 &nbsp;·&nbsp; The Genre Fractures &amp; Grows</span>
+    <p class="era-blurb">Progressive metal stopped being a single genre and became a family. Tool brought it to arenas. Opeth fused it with death metal and pastoral folk. Meshuggah broke rhythm itself. Porcupine Tree crossed it with post-rock and psychedelia. Pain of Salvation gave it philosophical depth. And Devin Townsend — conspicuously absent from the source video — produced some of its most singular and emotionally rich work.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #4bc4a0">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Psychedelic / Alternative Wing</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1996–2001</span>
+  <div class="cover" id="cov-tool"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">TOOL</span>
+      <span class="card-album">Ænima · Lateralus</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Mainstream Breakthrough</span>
+      <span class="tag tag-sub">Art Metal</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">Tool made progressive metal the biggest rock music of its era. Fibonacci-sequence song structures, Adam Jones's hypnotic riffing, Danny Carey's polyrhythmic mastery, and Maynard Keenan's enigmatic lyricism. <em>Lateralus</em> (2001) is one of the most important metal albums ever recorded — conceptually unified, structurally radical, and commercially enormous.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1999–2007</span>
+  <div class="cover" id="cov-pt"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">PORCUPINE TREE</span>
+      <span class="card-album">In Absentia · Deadwing · Fear of a Blank Planet</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Post-Rock Crossover</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Post-Rock</span>
+    </div>
+    <p class="card-note">Steven Wilson bridged progressive rock's cerebral tradition with metal's power and post-rock's atmosphere. <em>Fear of a Blank Planet</em> (2007) examined digital alienation and psychological fragmentation with extraordinary musical precision — and became one of the era's most influential prog metal records.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #c03030">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Progressive Death Metal — Maturity</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1996–2001</span>
+  <div class="cover" id="cov-opeth"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">OPETH</span>
+      <span class="card-album">Morningrise · Still Life · Blackwater Park</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Death-Prog Zenith</span>
+      <span class="tag tag-sub">Progressive Death Metal</span>
+    </div>
+    <p class="card-note"><em>Blackwater Park</em> (2001) — produced by Steven Wilson — fused growling death metal with acoustic pastoral passages, folk guitar, jazz harmony, and Mellotron. An entirely new hybrid that no one has surpassed. Åkerfeldt's songwriting in this period represents progressive metal's greatest sustained achievement in the death metal tradition.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #4b8bc4">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Rhythmic / Technical Wing</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1995–2008</span>
+  <div class="cover" id="cov-meshuggah"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">MESHUGGAH</span>
+      <span class="card-album">Destroy Erase Improve · Chaosphere · ObZen</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Rhythmic Revolution</span>
+      <!-- <span class="tag tag-sub">Djent Progenitor</span> -->
+      <span class="tag tag-sub">Proto Djent</span>
+      <span class="tag tag-sub">Djent</span>
+    </div>
+    <p class="card-note">Meshuggah shattered rhythmic convention — polymetric guitar riffs operating in a different time signature to the drums created a mechanical, inhuman complexity unlike anything before. They invented the sonic and rhythmic language that would become djent: the defining prog-metal sub-genre of the 2010s. <em>ObZen</em> (2008) is their definitive statement.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #c48b4b">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Concept / Philosophical Wing</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1995–2004</span>
+  <div class="cover" id="cov-ayreon"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">AYREON</span>
+      <span class="card-album">The Final Experiment · Into the Electric Castle</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Symphonic Concept Album</span>
+      <span class="tag tag-sub">Symphonic Progressive Metal</span>
+    </div>
+    <p class="card-note">Arjen Lucassen's studio project fused the conceptual ambition of 1970s prog rock with metal's power through large-cast collaborative recordings. <em>Into the Electric Castle</em> (1998) — featuring twelve vocalists — is a maximalist, theatrical concept album that represents a unique corner of the prog-metal world.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1997–2006</span>
+  <div class="cover" id="cov-devin"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">DEVIN TOWNSEND</span>
+      <span class="card-album">Ocean Machine: Biomech · Terria · Accelerated Evolution</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Greatest Video Omission</span>
+      <span class="tag tag-sub">Progressive Rock</span>
+      <span class="tag tag-sub">Ambient Metal</span>
+      <!-- <span class="tag tag-warn">Absent from Video</span> -->
+    </div>
+    <p class="card-note">The video's single most inexplicable omission. Townsend's wall-of-sound production, emotional range (from ambient beauty to crushing heaviness), and compositional originality make him arguably the most individually creative figure in progressive metal across three decades. <em>Ocean Machine</em>, <em>Terria</em>, and <em>Accelerated Evolution</em> are masterworks. His absence is indefensible.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-expansion)">
+  <span class="entry-year">1999–2004</span>
+  <div class="cover" id="cov-pos"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">PAIN OF SALVATION</span>
+      <span class="card-album">The Perfect Element Pt. I · Remedy Lane · Be</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Philosophical Depth</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">Daniel Gildenlöw brought existential philosophy, psychological depth, and theatrical scope to progressive metal. <em>Remedy Lane</em> (2002) is an emotionally devastating concept album about memory and loss — among the most affecting works the genre has produced. His willingness to be genuinely vulnerable within a metal context was unprecedented.</p>
+  </div>
+</div>
+
+<div class="annotation">
+  <div class="annotation-inner">
+    <strong>⚠ Video Blind Spot — Expansion Era</strong>
+    The source video either omits or badly underweights Devin Townsend, Atheist, Cynic, and Symphony X. Comment sections on the original video are unanimous: these are not peripheral figures — they are central to the genre's development. The Eastern European progressive metal scene (Riverside, Persefone) receives no coverage despite significant output.
+  </div>
+</div>
+
+<!-- ─────────── ERA 5 · MODERN ─────────── -->
+<div class="era-divider" style="--era-col: var(--c-modern)">
+  <div class="era-inner">
+    <span class="era-name">MODERN ERA</span>
+    <span class="era-years">2007 — Present &nbsp;·&nbsp; New Waves &amp; Maturity</span>
+    <p class="era-blurb">The internet era exploded the genre's reach and fragmented its identity. Djent became the defining new sub-genre of the 2010s. A new European wave produced some of the most sophisticated progressive metal ever recorded.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2007</span>
+  <div class="cover" id="cov-btbam"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">BETWEEN THE BURIED AND ME</span>
+      <span class="card-album">Colors</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Modern Prog-Metal Peak</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Metalcore</span>
+    </div>
+    <p class="card-note">A single 65-minute composition across 8 tracks — obliterating genre boundaries with death metal, jazz, bluegrass, reggae, orchestral passages, and hardcore within a unified narrative arc. Among the most ambitious progressive metal albums ever made.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #4b8bc4">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">Djent Wave</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2010–15</span>
+  <div class="cover" id="cov-periphery"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">PERIPHERY</span>
+      <span class="card-album">Periphery · Juggernaut: Alpha/Omega</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Djent Mainstream</span>
+      <span class="tag tag-sub">Djent</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">Misha Mansoor translated Meshuggah's rhythmic revolution into a more melodic, vocally accessible context. <em>Juggernaut: Alpha/Omega</em> (2015) is their most ambitious work: a double-concept album of genuine technical and compositional sophistication that elevated djent beyond internet niche into serious artistic statement.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2011–14</span>
+  <div class="cover" id="cov-aal"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">ANIMALS AS LEADERS</span>
+      <span class="card-album">Animals as Leaders · The Joy of Motion</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Instrumental Djent</span>
+      <span class="tag tag-sub">Djent</span>
+      <span class="tag tag-sub">Jazz Fusion Metal</span>
+    </div>
+    <p class="card-note">Tosin Abasi's eight-string technique merged Meshuggah's polymetric architecture with jazz-fusion sensibility — entirely instrumental. A new peak of technical progressive metal that proved the music could sustain itself on pure compositional merit, without vocals.</p>
+  </div>
+</div>
+
+<div class="sub-header" style="--sub-col: #2a9e5c">
+  <div class="sub-header-line"></div>
+  <span class="sub-header-label">New European Progressive Metal Wave</span>
+  <div class="sub-header-line"></div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2004–17</span>
+  <div class="cover" id="cov-riverside"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">RIVERSIDE</span>
+      <span class="card-album">Second Life Syndrome · Anno Domini High Definition</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Eastern European</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Post-Rock</span>
+    </div>
+    <p class="card-note">Poland's Riverside fused melancholy, progressive rock atmosphere, and metal heaviness with a distinctly Eastern European emotional gravity. Among the most consistent prog metal acts of the 2000s and 2010s, and representative of a broader Eastern European scene almost entirely ignored by the source video.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2009–17</span>
+  <div class="cover" id="cov-leprous"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">LEPROUS</span>
+      <span class="card-album">Bilateral · Coal · Malina</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Norwegian Evolution</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Art Rock</span>
+    </div>
+    <p class="card-note">Einar Solberg's extraordinary falsetto range and the band's willingness to evolve from complex metal toward art rock represent one of the most sophisticated modern prog metal voices. Their arc from the crushing <em>Bilateral</em> (2011) to the orchestral pop of <em>Malina</em> (2017) is one of the era's most compelling creative journeys.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2010–16</span>
+  <div class="cover" id="cov-haken"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">HAKEN</span>
+      <span class="card-album">Visions · The Mountain · Affinity</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">UK Prog Revival</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+    </div>
+    <p class="card-note">Haken channelled classic-era prog metal's compositional language through a distinctly British lens — playful, melodically rich, technically impressive without ostentation. <em>The Mountain</em> (2013) is among the finest modern progressive metal albums, balancing emotional directness with structural complexity.</p>
+  </div>
+</div>
+
+<div class="entry" style="--era-col: var(--c-modern)">
+  <span class="entry-year">2014–20</span>
+  <div class="cover" id="cov-calihorse"></div>
+  <div class="card">
+    <div class="card-head">
+      <span class="card-band">CALIGULA'S HORSE</span>
+      <span class="card-album">In Contact · Rise Radiant</span>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-key">Australian Wave</span>
+      <span class="tag tag-sub">Progressive Metal</span>
+      <span class="tag tag-sub">Art Rock</span>
+    </div>
+    <p class="card-note">Australian progressive metal at its finest: melodically inventive, emotionally direct, and technically accomplished without being ostentatiously showy. Jim Grey's distinctive vocals and the band's tight ensemble playing make them one of the most promising contemporary acts in the genre.</p>
+  </div>
+</div>
+
+<!-- ─────────── CORRECTIONS ─────────── -->
+<div class="corrections">
+  <h3>⚠ &nbsp; VIDEO CORRECTIONS — Based on Comments &amp; Analysis</h3>
+  <div class="corr-row">
+    <div class="corr-wrong">"Rush is a founding text of progressive metal"</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right">Rush are prog rock / hard rock — vital as an <em>influence</em>, not as practitioners of prog metal. Their role is as a bridge, not a founder. Conflating the two muddies the genre's actual origins.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Voivod barely mentioned or absent</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right"><em>Dimension Hatross</em> and <em>Nothingface</em> are canonical prog metal texts. Their dissonant harmonic language and sci-fi conceptualism are foundational. Their marginalisation in the video is a serious error.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Devin Townsend absent</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right">Arguably the most individually creative figure in prog metal across 30 years. The video's single most inexplicable blind spot — flagged by nearly every commenter.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Atheist and Cynic underserved</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right"><em>Unquestionable Presence</em> and <em>Focus</em> are foundational for the entire prog-death wing. Without them, the lineage from Death to Opeth is unexplained and historically incoherent.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Symphony X underrepresented</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right"><em>The Divine Wings of Tragedy</em> and <em>V: The New Mythology Suite</em> are among the era's definitive neo-classical prog metal works. Their absence diminishes coverage of the 1990s.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Genesis / Yes / ELP not mentioned as ancestors</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right">The structural and compositional vocabulary of prog metal comes directly from 1970s British prog rock. The genre's lineage is incoherent without naming these bands as primary ancestors.</div>
+  </div>
+  <div class="corr-row">
+    <div class="corr-wrong">Eastern European prog metal scene absent</div>
+    <div class="corr-arr">→</div>
+    <div class="corr-right">Riverside, Persefone, and related acts represent a significant and distinctive body of work in the 2000s–2010s. The video's coverage is almost entirely Anglo-American.</div>
+  </div>
+</div>
+
+</div><!-- /timeline -->
+
+<footer>
+  Progressive Metal — A Complete History &nbsp;·&nbsp; Origins 1969 – Present &nbsp;·&nbsp; Based on video analysis + comment review &nbsp;·&nbsp; Cover art via Last.fm
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  Album art — loaded from local covers/ folder.
+//  Run download_covers.py once to populate covers/.
+// ═══════════════════════════════════════════════════
+const albums = [
+  { id:'cov-kc',          slug:'king_crimson-in_the_court_of_the_crimson_king'  },
+  { id:'cov-sabbath',     slug:'black_sabbath-paranoid'                 },
+  { id:'cov-yes',         slug:'yes-close_to_the_edge'                  },
+  { id:'cov-rush',        slug:'rush-2112'                              },
+  { id:'cov-maiden',      slug:'iron_maiden-the_number_of_the_beast'    },
+  { id:'cov-sabbath-dio', slug:'black_sabbath-heaven_and_hell'          },
+  { id:'cov-fw-spectre',  slug:'fates_warning-the_spectre_within'       },
+  { id:'cov-fw-guardian', slug:'fates_warning-awaken_the_guardian'      },
+  { id:'cov-watchtower',  slug:'watchtower-control_and_resistance'      },
+  { id:'cov-qr',          slug:'queensryche-operation_mindcrime'        },
+  { id:'cov-cg',          slug:'crimson_glory-transcendence'            },
+  { id:'cov-voivod',      slug:'voivod-dimension_hatross'               },
+  { id:'cov-fw-parallels',slug:'fates_warning-parallels'                },
+  { id:'cov-atheist',     slug:'atheist-unquestionable_presence'        },
+  { id:'cov-death',       slug:'death-human'                            },
+  { id:'cov-cynic',       slug:'cynic-focus'                            },
+  { id:'cov-dt-iaw',      slug:'dream_theater-images_and_words'         },
+  { id:'cov-dt-awake',    slug:'dream_theater-awake'                    },
+  { id:'cov-sx',          slug:'symphony_x-the_divine_wings_of_tragedy' },
+  { id:'cov-fw-apsg',     slug:'fates_warning-a_pleasant_shade_of_gray' },
+  { id:'cov-tool',        slug:'tool-lateralus'                         },
+  { id:'cov-pt',          slug:'porcupine_tree-fear_of_a_blank_planet'  },
+  { id:'cov-opeth',       slug:'opeth-blackwater_park'                  },
+  { id:'cov-meshuggah',   slug:'meshuggah-obzen'                        },
+  { id:'cov-pos',         slug:'pain_of_salvation-remedy_lane'          },
+  { id:'cov-ayreon',      slug:'ayreon-into_the_electric_castle'        },
+  { id:'cov-devin',       slug:'devin_townsend-ocean_machine_biomech'   },
+  { id:'cov-btbam',       slug:'between_the_buried_and_me-colors'       },
+  { id:'cov-periphery',   slug:'periphery-juggernaut_alpha'             },
+  { id:'cov-aal',         slug:'animals_as_leaders-the_joy_of_motion'   },
+  { id:'cov-riverside',   slug:'riverside-second_life_syndrome'         },
+  { id:'cov-haken',       slug:'haken-the_mountain'                     },
+  { id:'cov-leprous',     slug:'leprous-malina'                         },
+  { id:'cov-calihorse',   slug:'caligulas_horse-in_contact'             },
+];
+
+albums.forEach(a => {
+  const el = document.getElementById(a.id);
+  if (!el) return;
+  const ph = el.querySelector('.placeholder');
+  const imgEl = document.createElement('img');
+  imgEl.alt     = a.slug;
+  imgEl.loading = 'lazy';
+  imgEl.onload  = () => { if (ph) ph.classList.add('hidden'); imgEl.classList.add('loaded'); };
+  imgEl.onerror = (e) => { console.error('image failed:', imgEl.src); };
+  imgEl.src = `covers/${a.slug}.jpg`;
+  el.appendChild(imgEl);
+});
+</script>
+</body>
+</html>
