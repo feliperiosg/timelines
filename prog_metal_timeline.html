@@ -30,15 +30,15 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Libre Baskerville', Georgia, serif;
-  width: 900px;
+  width: 725px;
   margin: 0 auto;
-  padding-bottom: 80px;
+  padding-bottom: 1px;
 }
 
 /* ═══════════════════════════ HEADER ═══════════════════════════ */
 .hdr {
   position: relative;
-  padding: 64px 60px 48px;
+  padding: 1px 0px 13px 0px;
   text-align: center;
   background: linear-gradient(175deg, #110818 0%, #08080e 60%);
   border-bottom: 1px solid var(--border);
@@ -65,44 +65,32 @@ body {
 }
 .hdr h1 em { color: var(--gold); font-style: normal; }
 .hdr-sub {
-  margin-top: 18px;
+  max-width: 700px; text-align: center;
+  margin: 10px auto 0;
+  margin-top: 10px;
   font-style: italic; font-size: 16px;
   color: var(--muted); letter-spacing: .5px;
 }
 .hdr-rule {
   width: 60px; height: 1px;
   background: var(--gold); opacity: .4;
-  margin: 22px auto 0;
+  margin: 13px auto 0;
+  margin-bottom: 13px;
 }
-
+  
 /* ═══════════════════════════ LEGEND ═══════════════════════════ */
-.legend {
-  display: flex; flex-wrap: wrap;
-  justify-content: center; gap: 8px 28px;
-  padding: 16px 40px;
-  background: var(--panel);
-  border-bottom: 1px solid var(--border);
-}
-.legend-item {
-  display: flex; align-items: center; gap: 7px;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted);
-}
-.ldot {
-  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
-}
+<!-- .legend {} -->
 
 /* ═══════════════════════════ TIMELINE ═══════════════════════════ */
 .timeline {
   position: relative;
-  padding: 0 40px;
+  padding: 0 0px;
 }
-/* The vertical gold line */
+/* The vertical gold line aligned with... */
 .timeline::before {
   content: '';
   position: absolute;
-  left: 88px; top: 0; bottom: 0; width: 2px;
+  left: calc(0px + 27px); top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg,
     transparent 0%,
     var(--gold) 3%,
@@ -114,13 +102,14 @@ body {
 /* ═══════════════════════════ ERA DIVIDER ═══════════════════════════ */
 .era-divider {
   position: relative;
-  margin: 52px 0 0;
-  padding-left: 108px;
+  margin: 37px 0 0;
+  margin-bottom: 17px;
+  padding-left: calc(58px + 11px);
 }
 .era-divider::before {
   content: '';
   position: absolute;
-  left: 82px; top: 26px;
+  left: 19px; top: 21px;
   width: 16px; height: 16px;
   background: var(--era-col);
   border-radius: 50%;
@@ -130,7 +119,7 @@ body {
 }
 .era-inner {
   border-left: 3px solid var(--era-col);
-  padding: 14px 20px 14px 22px;
+  padding: 9px 0px 10px 13px;
   background: linear-gradient(90deg, rgba(255,255,255,.025) 0%, transparent 100%);
 }
 .era-name {
@@ -146,51 +135,47 @@ body {
 .era-blurb {
   font-style: italic; font-size: 13px;
   color: #a09ab8; margin-top: 8px;
-  line-height: 1.65; max-width: 620px;
+  line-height: 1.65; max-width: 570px;
 }
 
 /* ═══════════════════════════ ENTRY ═══════════════════════════ */
 .entry {
-  position: relative;
   display: flex;
-  gap: 0;
-  margin-top: 28px;
-  padding-left: 108px;
   align-items: flex-start;
+  gap: 0;
+  padding: 8px 0;
+  margin-top: 0px;
+  <!-- border-bottom: 1px solid var(--border); -->
+  border-bottom: none;
 }
-/* Timeline node dot */
-.entry::before {
-  content: '';
-  position: absolute;
-  left: 84px; top: 22px;
-  width: 8px; height: 8px;
-  background: var(--era-col, var(--gold));
-  border-radius: 50%;
-  border: 2px solid var(--bg);
-  z-index: 2;
-}
-/* Year label left of dot */
+.entry:last-child { border-bottom: none; }
+
+/* Year + dot column */
 .entry-year {
-  position: absolute;
-  left: 0; top: 18px;
-  width: 78px; text-align: right;
+  flex-shrink: 0;
+  width: 58px;
+  text-align: left;
+  padding-right: 0px;
+  padding-top: 0px;
+  margin-top: 4px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 10px; letter-spacing: 1px;
   color: var(--era-col, #8a8098);
   opacity: 0.85;
-  padding-right: 8px;
 }
 
 /* Album cover art */
 .cover {
   flex-shrink: 0;
-  width: 88px; height: 88px;
+  width: 83px; height: 83px;
   border-radius: 3px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--panel);
   position: relative;
-  margin-right: 16px;
+  margin-left: 11px;
+  margin-right: 12px;
+  margin-top: 4px;
 }
 .cover img {
   width: 100%; height: 100%;
@@ -199,7 +184,8 @@ body {
 }
 .cover-placeholder {
   width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center;
+  justify-content: center;
   flex-direction: column; gap: 4px;
   padding: 8px;
   position: relative;
@@ -229,10 +215,11 @@ body {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 3px;
-  padding: 13px 16px 14px;
+  padding: 10px 3px 9px 13px;
   position: relative;
   overflow: hidden;
   min-width: 0;
+  margin-top: 4px;
 }
 .card::before {
   content: '';
@@ -270,13 +257,14 @@ body {
 .card-note {
   font-size: 13px; line-height: 1.65;
   color: var(--text); margin-top: 8px;
+  margin-right: 0px;
 }
 
 /* ═══════════════════════════ SUB-GENRE HEADER ═══════════════════════════ */
 .sub-header {
   position: relative;
-  padding-left: 108px;
-  margin-top: 38px; margin-bottom: 4px;
+  padding-left: calc(58px + 11px);
+  margin-top: 24px; margin-bottom: 4px;
   display: flex; align-items: center; gap: 12px;
 }
 .sub-header-line {
@@ -293,8 +281,8 @@ body {
 
 /* ═══════════════════════════ ANNOTATION ═══════════════════════════ */
 .annotation {
-  margin: 20px 0 0;
-  padding-left: 108px;
+  margin: 14px 0 0;
+  padding-left: 0;
 }
 .annotation-inner {
   background: rgba(192,48,48,.05);
@@ -340,13 +328,98 @@ body {
 footer {
   border-top: 1px solid var(--border);
   text-align: center;
-  padding: 22px;
+  padding: 7px 19px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 9px; letter-spacing: 2px;
   color: var(--muted);
   background: var(--panel);
-  margin-top: 60px;
+  margin-top: 27px;
 }
+
+/* ═══════════════════════════ COLLAB LOGO ═══════════════════════════ */
+.collab-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.collab-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.collab-badge {
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    margin-top: 0px;
+    line-height: 1.5;
+}
+.collab-falo {
+    padding: 4px 4px;
+    color: #e8b86a;
+    background: rgba(232,184,106,0.08);
+    letter-spacing: 0.05em;
+}
+.collab-plus {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    padding: 1px 0px 0px 2px;    
+    font-size: 0.55rem;
+}
+.collab-claude {
+    padding: 4px 4px;
+    color: #9cb8d8;
+    background: rgba(156,184,216,0.08);
+    letter-spacing: 0.05em;
+}
+.collab-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #4a8fa8;
+    margin: 0 6px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* ═══════════════════════════ PRINT ═══════════════════════════ */
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+    width: 100%;
+    padding-bottom: 0;
+  }
+  .hdr {
+    background: #fff;
+    padding: 20px 40px 16px;
+  }
+  .hdr h1 { color: #111; text-shadow: none; }
+  .hdr-eyebrow, .hdr-sub { color: #555; }
+  .hdr::after { display: none; }
+  .timeline { padding: 0 20px; }
+  .timeline::before { background: #ccc; opacity: 1; }
+  .era-inner { background: none; }
+  .card { background: #f8f8f8; border-color: #ddd; }
+  .card::before { opacity: 0.4; }
+  .cover { border-color: #ddd; background: #eee; }
+  footer { background: #f0f0f0; border-color: #ddd; margin-top: 20px; }
+  .entry { break-inside: avoid; }
+  .era-divider { break-before: auto; }
+}
+
 </style>
 </head>
 <body>
@@ -355,21 +428,12 @@ footer {
 <div class="hdr">
   <p class="hdr-eyebrow">An Annotated History &nbsp;·&nbsp; 1969 – 2025</p>
   <h1>PROGRESSIVE<br><em>METAL</em></h1>
-  <p class="hdr-sub">From King Crimson to Dream Theater's Return — Origins, Lineage & Essential Works</p>
+  <p class="hdr-sub">From King Crimson to Dream Theater's Return<br>Origins, Lineage & Essential Works</p>
   <!-- <p class="hdr-sub">From King Crimson to Dream Theater's Return — The Complete Lineage, 1969–2025</p> -->
-  <div class="hdr-rule"></div>
+  <!-- <div class="hdr-rule"></div> -->
 </div>
 
-<!-- ══════════ LEGEND ══════════ -->
-<div class="legend">
-  <div class="legend-item"><div class="ldot" style="background:var(--c-origin)"></div>Origin / Proto</div>
-  <div class="legend-item"><div class="ldot" style="background:var(--c-birth)"></div>Birth</div>
-  <div class="legend-item"><div class="ldot" style="background:var(--c-classic)"></div>Classic Era</div>
-  <div class="legend-item"><div class="ldot" style="background:var(--c-expansion)"></div>Expansion</div>
-  <div class="legend-item"><div class="ldot" style="background:var(--c-modern)"></div>Modern Era</div>
-  <div class="legend-item"><div class="ldot" style="background:var(--gold)"></div>Key / Foundational Album</div>
-  <div class="legend-item"><div class="ldot" style="background:#c03030"></div>Omitted / Underserved by video</div>
-</div>
+
 
 <!-- ══════════ TIMELINE ══════════ -->
 <div class="timeline">
@@ -606,12 +670,7 @@ footer {
   </div>
 </div>
 
-<div class="annotation">
-  <div class="annotation-inner">
-    <strong>⚠ Video Blind Spot — Birth Era</strong>
-    The source video significantly underweights Voivod. <em>Dimension Hatross</em> (1988) and <em>Nothingface</em> (1989) are essential progressive metal texts. Comment sections on the original video consistently flag this as the era's most glaring omission.
-  </div>
-</div>
+
 
 <!-- ─────────── ERA 3 · CLASSIC ERA ─────────── -->
 <div class="era-divider" style="--era-col: var(--c-classic)">
@@ -988,12 +1047,7 @@ footer {
   </div>
 </div>
 
-<div class="annotation">
-  <div class="annotation-inner">
-    <strong>⚠ Video Blind Spot — Expansion Era</strong>
-    The source video either omits or badly underweights Devin Townsend, Atheist, Cynic, and Symphony X. Comment sections on the original video are unanimous: these are not peripheral figures — they are central to the genre's development. The Eastern European progressive metal scene (Riverside, Persefone) receives no coverage despite significant output.
-  </div>
-</div>
+
 
 <!-- ─────────── ERA 5 · MODERN ─────────── -->
 <div class="era-divider" style="--era-col: var(--c-modern)">
@@ -1241,61 +1295,23 @@ footer {
   </div>
 </div>
 
-<!-- ─────────── CORRECTIONS ─────────── -->
-<div class="corrections">
-  <h3>⚠ &nbsp; VIDEO CORRECTIONS — Based on Comments &amp; Analysis</h3>
-  <div class="corr-row">
-    <div class="corr-wrong">"Rush is a founding text of progressive metal"</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">Rush are prog rock / hard rock — vital as an <em>influence</em>, not as practitioners of prog metal. Their role is as a bridge, not a founder. Conflating the two muddies the genre's actual origins.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Voivod barely mentioned or absent</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right"><em>Dimension Hatross</em> and <em>Nothingface</em> are canonical prog metal texts. Their dissonant harmonic language and sci-fi conceptualism are foundational. Their marginalisation in the video is a serious error.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Devin Townsend absent</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">Arguably the most individually creative figure in prog metal across 30 years. The video's single most inexplicable blind spot — flagged by nearly every commenter.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Atheist and Cynic underserved</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right"><em>Unquestionable Presence</em> and <em>Focus</em> are foundational for the entire prog-death wing. Without them, the lineage from Death to Opeth is unexplained and historically incoherent.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Symphony X underrepresented</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right"><em>The Divine Wings of Tragedy</em> and <em>V: The New Mythology Suite</em> are among the era's definitive neo-classical prog metal works. Their absence diminishes coverage of the 1990s.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Genesis / Yes / ELP not mentioned as ancestors</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">The structural and compositional vocabulary of prog metal comes directly from 1970s British prog rock. The genre's lineage is incoherent without naming these bands as primary ancestors.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Eastern European prog metal scene absent</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">Riverside, Persefone, and related acts represent a significant and distinctive body of work in the 2000s–2010s. The video's coverage is almost entirely Anglo-American.</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Caligula's Horse labelled as "European wave"</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">Caligula's Horse are from Brisbane, Australia — not Europe. The progressive metal revival of the 2010s was genuinely global: Leprous (Norway), Haken (UK), Caligula's Horse (Australia), Riverside (Poland).</div>
-  </div>
-  <div class="corr-row">
-    <div class="corr-wrong">Timeline stops at 2020 — ignores the 2015–2025 decade</div>
-    <div class="corr-arr">→</div>
-    <div class="corr-right">The late 2010s and early 2020s were among the genre's richest periods. Dream Theater's <em>Parasomnia</em> (2025, with Mike Portnoy returning), Leprous's <em>Pitfalls</em>, Rivers of Nihil's <em>Where Owls Know My Name</em>, Blood Incantation's <em>Hidden History</em> — all essential entries in the ongoing story.</div>
-  </div>
 
-</div><!-- /corrections -->
 
 </div><!-- /timeline -->
 
+<!-- ═══════════════════════════════════════════════ FOOTER -->
 <footer>
-  Progressive Metal — A Complete History &nbsp;·&nbsp; Origins 1969 – Present &nbsp;·&nbsp; Cover art from local covers/ folder &nbsp;·&nbsp; Run download_covers.py to populate
+  Progressive Metal — An Annotated History &nbsp;·&nbsp; 1969 – Present &nbsp;·&nbsp; Cover art via iTunes &amp; MusicBrainz
+  <br>
+  <br>
+  <div class="collab-logo">
+    <div class="collab-text">curated &amp; coded<br>in collaboration</div>
+    <div class="collab-badge">
+      <span class="collab-falo">falo</span>
+      <span class="collab-plus">+</span>
+      <span class="collab-claude">claude</span>
+    </div>
+  </div>
 </footer>
 
 <script>
