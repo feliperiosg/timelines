@@ -10,13 +10,16 @@
 
 :root {
   --bg:       #08080e;
+  --surface:  #161618;
   --panel:    #0e0e18;
   --border:   #1e1e2e;
   --gold:     #c9a84c;
   --gold2:    #e8c96a;
   --text:     #ccc8be;
-  --muted:    #55505e;
+  --silent:   #55505e;
+  --muted:    #7c7390;  /* mine opt */
   --white:    #f2ede4;
+  --eratxt:   #a09ab8;
   --c-origin:    #c0402a;
   --c-birth:     #2a6bbb;
   --c-classic:   #2a9e5c;
@@ -69,7 +72,7 @@ body {
   margin: 10px auto 0;
   margin-top: 10px;
   font-style: italic; font-size: 16px;
-  color: var(--muted); letter-spacing: .5px;
+  color: var(--silent); letter-spacing: .5px;
 }
 .hdr-rule {
   width: 60px; height: 1px;
@@ -130,11 +133,11 @@ body {
 .era-years {
   font-family: 'Share Tech Mono', monospace;
   font-size: 9px; letter-spacing: 3px;
-  color: var(--muted); margin-top: 3px; display: block;
+  color: var(--eratxt); margin-top: 3px; display: block;
 }
 .era-blurb {
   font-style: italic; font-size: 13px;
-  color: #a09ab8; margin-top: 8px;
+  color: var(--eratxt); margin-top: 8px;
   line-height: 1.65; max-width: 570px;
 }
 
@@ -331,7 +334,7 @@ footer {
   padding: 7px 19px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 9px; letter-spacing: 2px;
-  color: var(--muted);
+  color: var(--silent);
   background: var(--panel);
   margin-top: 27px;
 }
@@ -346,7 +349,7 @@ footer {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.12em;
-    color: var(--text-muted);
+    color: var(--silent);
     text-align: right;
     line-height: 1.5;
     display: flex;
@@ -375,7 +378,7 @@ footer {
 .collab-plus {
     display: flex;
     align-items: center;
-    color: var(--text-muted);
+    color: var(--silent);
     padding: 1px 0px 0px 2px;    
     font-size: 0.55rem;
 }
@@ -1301,9 +1304,9 @@ footer {
 
 <!-- ═══════════════════════════════════════════════ FOOTER -->
 <footer>
-  Progressive Metal — An Annotated History &nbsp;·&nbsp; 1969 – Present &nbsp;·&nbsp; Cover art via iTunes &amp; MusicBrainz
+  Cover Art via iTunes &amp; MusicBrainz
   <br>
-  <br>
+  <br>  
   <div class="collab-logo">
     <div class="collab-text">curated &amp; coded<br>in collaboration</div>
     <div class="collab-badge">
