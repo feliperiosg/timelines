@@ -6,6 +6,7 @@
 <title>Progressive Metal — A Complete History</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ═══════════════════════════ CORE STYLES ═══════════════════════════ */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
@@ -17,7 +18,7 @@
   --gold2:    #e8c96a;
   --text:     #ccc8be;
   --silent:   #55505e;
-  --muted:    #7c7390;  /* mine opt */
+  --muted:    #7c7390; /* mine opt */
   --white:    #f2ede4;
   --eratxt:   #a09ab8;
   --c-origin:    #c0402a;
@@ -33,7 +34,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Libre Baskerville', Georgia, serif;
-  width: 725px;
+  max-width: 725px; /* Changed for responsiveness */
+  width: 100%; /* Ensures padding on small screens */
   margin: 0 auto;
   padding-bottom: 1px;
 }
@@ -41,7 +43,7 @@ body {
 /* ═══════════════════════════ HEADER ═══════════════════════════ */
 .hdr {
   position: relative;
-  padding: 1px 0px 13px 0px;
+  padding: 1px 0 13px 0;
   text-align: center;
   background: linear-gradient(175deg, #110818 0%, #08080e 60%);
   border-bottom: 1px solid var(--border);
@@ -56,13 +58,13 @@ body {
 }
 .hdr-eyebrow {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 6px;
+  font-size: 11px; letter-spacing: 5.3px;
   color: var(--gold); text-transform: uppercase;
-  margin-bottom: 20px; opacity: .7;
+  margin-bottom: 20px; opacity: .75;
 }
 .hdr h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 88px;
+  font-size: clamp(50px, 10vw, 88px); /* Fluid size for mobile */
   letter-spacing: 6px; line-height: .9;
   color: var(--white);
   text-shadow: 0 0 100px rgba(201,168,76,.15);
@@ -71,51 +73,37 @@ body {
 .hdr-sub {
   max-width: 700px; text-align: center;
   margin: 10px auto 0;
-  font-style: italic; font-size: 16px;
+  font-style: italic; font-size: 15px;
   color: var(--silent); letter-spacing: .5px;
 }
-.hdr-rule {
-  width: 60px; height: 1px;
-  background: var(--gold); opacity: .4;
-  margin: 13px auto 0;
-  margin-bottom: 13px;
-}
   
-/* ═══════════════════════════ LEGEND ═══════════════════════════ */
-/* .legend {} */
-
 /* ═══════════════════════════ TIMELINE ═══════════════════════════ */
-.timeline {
-  position: relative;
-  padding: 0 0px;
-}
-/* The vertical gold line aligned with... */
+.timeline { position: relative; padding: 0 0px; }
+
 .timeline::before {
   content: '';
   position: absolute;
-  /* left: calc(0px + 27px); */
-  left: 27px;
-  top: 0; bottom: 0; width: 2px;
+  left: 26px; /* left: calc(0px + 26px); */
+  top: 0; bottom: 0; width: 1.5px;
   background: linear-gradient(180deg,
     transparent 0%,
     var(--gold) 3%,
     var(--gold) 97%,
-    transparent 100%);
-  opacity: .18;
+    transparent 100%
+  );
+  opacity: .17;
 }
 
 /* ═══════════════════════════ ERA DIVIDER ═══════════════════════════ */
 .era-divider {
   position: relative;
-  margin: 37px 0 0;
-  margin-bottom: 17px;
-  /* padding-left: calc(58px + 11px); */
-  padding-left: 69px;
+  margin: 37px 0 17px 0;  
+  padding-left: 69px; /* padding-left: calc(58px + 11px); */
 }
 .era-divider::before {
   content: '';
   position: absolute;
-  left: 19px; top: 21px;
+  left: 18.5px; top: 21px;
   width: 16px; height: 16px;
   background: var(--era-col);
   border-radius: 50%;
@@ -125,7 +113,7 @@ body {
 }
 .era-inner {
   border-left: 3px solid var(--era-col);
-  padding: 9px 0px 10px 13px;
+  padding: 9px 0 10px 13px;
   background: linear-gradient(90deg, rgba(255,255,255,.025) 0%, transparent 100%);
 }
 .era-name {
@@ -135,274 +123,172 @@ body {
 }
 .era-years {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 3px;
-  color: var(--eratxt); margin-top: 3px; display: block;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--eratxt); margin-top: 4px; display: block;
 }
 .era-blurb {
   font-style: italic; font-size: 13px;
   color: var(--eratxt); margin-top: 8px;
-  line-height: 1.65; max-width: 570px;
+  line-height: 1.65; max-width: 550px;
 }
 
 /* ═══════════════════════════ ENTRY ═══════════════════════════ */
 .entry {
   display: flex;
   align-items: flex-start;
-  gap: 0;
   padding: 8px 0;
-  margin-top: 0px;
-  /* border-bottom: 1px solid var(--border); */
-  border-bottom: none;
 }
-.entry:last-child { border-bottom: none; }
-
-/* Year + dot column */
 .entry-year {
   flex-shrink: 0;
   width: 58px;
-  text-align: left;
-  padding-right: 0px;
-  padding-top: 0px;
-  margin-top: 4px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 1px;
-  color: var(--era-col, #8a8098);
-  opacity: 0.85;
+  font-size: 11px;
+  color: var(--era-col);
 }
-
-/* Album cover art */
 .cover {
   flex-shrink: 0;
   width: 83px; height: 83px;
   border-radius: 3px;
-  overflow: hidden;
   border: 1px solid var(--border);
-  background: var(--panel);
-  position: relative;
-  margin-left: 11px;
-  margin-right: 12px;
-  margin-top: 4px;
-}
-.cover img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.cover-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center;
+  background: var(--surface);
+  margin: 0 12px 0 11px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column; gap: 4px;
-  padding: 8px;
-  position: relative;
+  overflow: hidden;
+  /* Visual fallback if images don't load */
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
-.cover-placeholder .cp-band {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 9px; letter-spacing: 1px;
-  color: var(--ph-col, var(--gold));
-  text-align: center; line-height: 1.2;
-  z-index: 1;
-}
-.cover-placeholder .cp-album {
-  font-style: italic; font-size: 7.5px;
-  color: var(--muted); text-align: center; line-height: 1.3;
-  z-index: 1;
-}
-.cover-placeholder::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: var(--ph-col, var(--gold));
-}
+.cover img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Entry card */
 .card {
   flex: 1;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 10px 3px 9px 13px;
-  position: relative;
-  overflow: hidden;
-  min-width: 0;
-  margin-top: 4px;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; bottom: 0; width: 3px;
-  background: var(--era-col, var(--gold));
-  opacity: .55;
+  border-left: 3px solid var(--era-col);
+  border-left: 3px solid color-mix(in srgb, var(--era-col) 70%, transparent);
 }
 .card-head {
   display: flex; align-items: baseline;
-  gap: 10px; flex-wrap: wrap;
+  gap: 11px; flex-wrap: wrap;
 }
 .card-band {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px; letter-spacing: 2px;
-  color: var(--white); line-height: 1;
+  font-size: 22px; color: var(--white); line-height: 1;
 }
 .card-album {
-  font-style: italic; font-size: 13.5px;
-  color: var(--gold2); line-height: 1.2;
-}
-.card-tags {
-  display: flex; flex-wrap: wrap; gap: 4px;
-  margin-top: 7px;
+  font-style: italic; font-size: 14px;
+  color: var(--gold2);
 }
 .tag {
+  display: inline-block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px; letter-spacing: 1.5px;
-  padding: 2px 7px; border-radius: 2px; border: 1px solid;
+  font-size: 9px; padding: 2px 8px;
+  border: 1px solid; border-radius: 2px;
+  margin-top: 8px; margin-right: 5px;
   text-transform: uppercase;
 }
-.tag-key     { border-color: var(--gold);  color: var(--gold);  background: rgba(201,168,76,.07); }
-.tag-sub     { border-color: var(--muted); color: var(--muted); background: transparent; }
-.tag-warn    { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
+.tag-key { border-color: var(--gold); color: var(--gold); }
+.tag-sub { border-color: var(--muted); color: var(--muted); }
+.tag-warn { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
 .card-note {
-  font-size: 13px; line-height: 1.65;
-  color: var(--text); margin-top: 8px;
-  margin-right: 0px;
+  font-size: 13px; line-height: 1.6;
+  color: var(--text); margin-top: 10px;
 }
 
 /* ═══════════════════════════ SUB-GENRE HEADER ═══════════════════════════ */
 .sub-header {
-  position: relative;
-  /* padding-left: calc(58px + 11px); */
-  padding-left: 69px;
-  margin-top: 24px; margin-bottom: 4px;
+  margin: 27px 0 9px 69px;
   display: flex; align-items: center; gap: 12px;
+  /* border-bottom: 1px solid var(--border); padding-bottom: 5px; */
 }
 .sub-header-line {
   flex: 1; height: 1px;
   background: var(--sub-col, var(--muted));
-  opacity: .25;
+  opacity: .45;
 }
 .sub-header-label {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 13px; letter-spacing: 3px;
+  font-size: 14px; letter-spacing: 2px;
   color: var(--sub-col, var(--muted));
-  white-space: nowrap;
-}
-
-/* ═══════════════════════════ ANNOTATION ═══════════════════════════ */
-.annotation {
-  margin: 14px 0 0;
-  padding-left: 0;
-}
-.annotation-inner {
-  background: rgba(192,48,48,.05);
-  border: 1px dashed rgba(192,48,48,.2);
-  border-radius: 3px;
-  padding: 12px 18px;
-  font-size: 12.5px; font-style: italic;
-  color: var(--muted); line-height: 1.65;
-}
-.annotation-inner strong {
-  font-style: normal;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 2px;
-  color: #c03030; display: block; margin-bottom: 5px;
 }
 
 /* ═══════════════════════════ FOOTER ═══════════════════════════ */
 footer {
-  border-top: 1px solid var(--border);
-  text-align: center;
+  margin-top: 27px;
   padding: 7px 19px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--silent);
   font-family: 'Share Tech Mono', monospace;
   font-size: 9px; letter-spacing: 2px;
-  color: var(--silent);
-  background: var(--panel);
-  margin-top: 27px;
 }
 
 /* ═══════════════════════════ COLLAB LOGO ═══════════════════════════ */
 .collab-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .collab-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    color: var(--silent);
-    text-align: right;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--silent);
+  text-align: right;
+  line-height: 1.5;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 8px;
 }
 .collab-badge {
-    display: flex;
-    gap: 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    margin-top: 0px;
-    line-height: 1.5;
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  margin-top: 8px;
+  gap: 0;
+  background: var(--surface);
+  overflow: hidden;
+  line-height: 1.5;
 }
 .collab-falo {
-    padding: 4px 4px;
-    color: #e8b86a;
-    background: rgba(232,184,106,0.08);
-    letter-spacing: 0.05em;
+  padding: 4px 4px;
+  color: #e8b86a;
+  background: rgba(232,184,106,0.08);
+  letter-spacing: 0.05em;
 }
 .collab-plus {
-    display: flex;
-    align-items: center;
-    color: var(--silent);
-    padding: 1px 0px 0px 2px;    
-    font-size: 0.55rem;
+  display: flex;
+  align-items: center;
+  color: var(--silent);
+  padding: 1px 0px 0px 2px;    
+  font-size: 0.55rem;
 }
 .collab-claude {
-    padding: 4px 4px;
-    color: #9cb8d8;
-    background: rgba(156,184,216,0.08);
-    letter-spacing: 0.05em;
-}
-.collab-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #4a8fa8;
-    margin: 0 6px;
-    flex-shrink: 0;
-    opacity: 0.7;
+  padding: 4px 4px;
+  color: #9cb8d8;
+  background: rgba(156,184,216,0.08);
+  letter-spacing: 0.05em;
 }
 
-/* ═══════════════════════════ PRINT ═══════════════════════════ */
+/* ═══════════════════════════ PRINT OPTIMIZATION ═══════════════════════════ */
 @media print {
-  body {
-    background: #fff;
-    color: #111;
-    width: 100%;
-    padding-bottom: 0;
-    font-size: 11pt;
-  }
-  .hdr {
-    background: #fff;
-    padding: 20px 40px 16px;
-  }
-  .hdr h1 { color: #111; text-shadow: none; }
-  .hdr-eyebrow, .hdr-sub { color: #555; }
-  .hdr::after { display: none; }
-  .timeline { padding: 0 27px; }
-  .timeline::before { background: #ccc; opacity: 1; }
-  .era-inner { background: none; }
-  .card { background: #f8f8f8; border-color: #ddd; }
-  .card::before { opacity: 0.4; }
-  .cover { border-color: #ddd; background: #eee; }
-  footer { background: #f0f0f0; border-color: #ddd; margin-top: 20px; font-size: 8pt; letter-spacing: 1px; }
-  .entry { break-inside: avoid; }
-  .era-divider { break-before: auto; }
+  body { background: #fff; color: #000; width: 100%; max-width: 100%; }
+  .hdr { background: #fff; border-bottom: 2px solid #000; }
+  .hdr h1, .card-band { color: #000; }
+  .card { background: #fff; border: 1px solid #ddd; page-break-inside: avoid; }
+  .timeline::before { display: none; }
+  .era-divider::before { border: 1px solid #000; }
+  .tag { border: 1px solid #000; color: #000; }
+  footer { background: #fff; }
 }
-
 </style>
 </head>
 <body>
@@ -411,9 +297,7 @@ footer {
 <div class="hdr">
   <p class="hdr-eyebrow">An Annotated History &nbsp;·&nbsp; 1969 – 2025</p>
   <h1>PROGRESSIVE<br><em>METAL</em></h1>
-  <p class="hdr-sub">From King Crimson to Dream Theater's Return<br>Origins, Lineage & Essential Works</p>
-  <!-- <p class="hdr-sub">From King Crimson to Dream Theater's Return — The Complete Lineage, 1969–2025</p> -->
-  <!-- <div class="hdr-rule"></div> -->
+  <p class="hdr-sub">from King Crimson to Dream Theater's return<br>origins, lineage & essential works</p>
 </div>
 
 <!-- ══════════ TIMELINE ══════════ -->
@@ -423,7 +307,7 @@ footer {
 <div class="era-divider" style="--era-col: var(--c-origin)">
   <div class="era-inner">
     <span class="era-name">ORIGIN</span>
-    <span class="era-years">1969 — 1983 &nbsp;·&nbsp; Proto-Metal &amp; Prog Rock DNA</span>
+    <span class="era-years">1969 — 1983 &thinsp;·&thinsp; Proto-Metal &amp; Prog Rock DNA</span>
     <p class="era-blurb">Progressive metal did not emerge from a vacuum. Its double helix was woven by two parallel strands: the compositional ambition of 1970s British prog rock, and the raw heaviness of early heavy metal. These are the essential ancestors.</p>
   </div>
 </div>
@@ -695,7 +579,7 @@ footer {
     <div class="card-tags">
       <span class="tag tag-key">Prog-Death Pillar</span>
       <span class="tag tag-sub">Progressive Death Metal</span>
-      <span class="tag tag-warn">Underserved</span>
+      <span class="tag tag-warn">Largely Overlooked</span>
     </div>
     <p class="card-note"><em>Unquestionable Presence</em> (1991) — jazz-inflected rhythms, abstract harmonic structures, death metal heaviness. Atheist created progressive death metal before anyone had the language to describe it. Their influence on everyone from Cynic to Opeth is incalculable.</p>
   </div>
@@ -1283,7 +1167,6 @@ footer {
 <!-- ═══════════════════════════════════════════════ FOOTER -->
 <footer>
   Cover Art via iTunes &amp; MusicBrainz
-  <br>
   <br>  
   <div class="collab-logo">
     <div class="collab-text">curated &amp; coded<br>in collaboration</div>
@@ -1358,12 +1241,9 @@ const albums = [
 albums.forEach(a => {
   const el = document.getElementById(a.id);
   if (!el) return;
-  const ph = el.querySelector('.placeholder');
   const imgEl = document.createElement('img');
-  imgEl.alt     = a.slug;
+  imgEl.alt = a.slug;
   imgEl.loading = 'lazy';
-  imgEl.onload  = () => { if (ph) ph.classList.add('hidden'); imgEl.classList.add('loaded'); };
-  imgEl.onerror = () => { console.error('cover missing:', imgEl.src); };
   imgEl.src = `covers/${a.slug}.jpg`;
   el.appendChild(imgEl);
 });
