@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Progressive Metal — A Complete History</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -62,7 +62,8 @@ body {
 }
 .hdr h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 88px; letter-spacing: 6px; line-height: .9;
+  font-size: 88px;
+  letter-spacing: 6px; line-height: .9;
   color: var(--white);
   text-shadow: 0 0 100px rgba(201,168,76,.15);
 }
@@ -70,7 +71,6 @@ body {
 .hdr-sub {
   max-width: 700px; text-align: center;
   margin: 10px auto 0;
-  margin-top: 10px;
   font-style: italic; font-size: 16px;
   color: var(--silent); letter-spacing: .5px;
 }
@@ -82,7 +82,7 @@ body {
 }
   
 /* ═══════════════════════════ LEGEND ═══════════════════════════ */
-<!-- .legend {} -->
+/* .legend {} */
 
 /* ═══════════════════════════ TIMELINE ═══════════════════════════ */
 .timeline {
@@ -93,7 +93,9 @@ body {
 .timeline::before {
   content: '';
   position: absolute;
-  left: calc(0px + 27px); top: 0; bottom: 0; width: 2px;
+  /* left: calc(0px + 27px); */
+  left: 27px;
+  top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg,
     transparent 0%,
     var(--gold) 3%,
@@ -107,7 +109,8 @@ body {
   position: relative;
   margin: 37px 0 0;
   margin-bottom: 17px;
-  padding-left: calc(58px + 11px);
+  /* padding-left: calc(58px + 11px); */
+  padding-left: 69px;
 }
 .era-divider::before {
   content: '';
@@ -148,7 +151,7 @@ body {
   gap: 0;
   padding: 8px 0;
   margin-top: 0px;
-  <!-- border-bottom: 1px solid var(--border); -->
+  /* border-bottom: 1px solid var(--border); */
   border-bottom: none;
 }
 .entry:last-child { border-bottom: none; }
@@ -266,7 +269,8 @@ body {
 /* ═══════════════════════════ SUB-GENRE HEADER ═══════════════════════════ */
 .sub-header {
   position: relative;
-  padding-left: calc(58px + 11px);
+  /* padding-left: calc(58px + 11px); */
+  padding-left: 69px;
   margin-top: 24px; margin-bottom: 4px;
   display: flex; align-items: center; gap: 12px;
 }
@@ -379,6 +383,7 @@ footer {
     color: #111;
     width: 100%;
     padding-bottom: 0;
+    font-size: 11pt;
   }
   .hdr {
     background: #fff;
@@ -387,13 +392,13 @@ footer {
   .hdr h1 { color: #111; text-shadow: none; }
   .hdr-eyebrow, .hdr-sub { color: #555; }
   .hdr::after { display: none; }
-  .timeline { padding: 0 20px; }
+  .timeline { padding: 0 27px; }
   .timeline::before { background: #ccc; opacity: 1; }
   .era-inner { background: none; }
   .card { background: #f8f8f8; border-color: #ddd; }
   .card::before { opacity: 0.4; }
   .cover { border-color: #ddd; background: #eee; }
-  footer { background: #f0f0f0; border-color: #ddd; margin-top: 20px; }
+  footer { background: #f0f0f0; border-color: #ddd; margin-top: 20px; font-size: 8pt; letter-spacing: 1px; }
   .entry { break-inside: avoid; }
   .era-divider { break-before: auto; }
 }
@@ -410,8 +415,6 @@ footer {
   <!-- <p class="hdr-sub">From King Crimson to Dream Theater's Return — The Complete Lineage, 1969–2025</p> -->
   <!-- <div class="hdr-rule"></div> -->
 </div>
-
-
 
 <!-- ══════════ TIMELINE ══════════ -->
 <div class="timeline">
@@ -692,7 +695,7 @@ footer {
     <div class="card-tags">
       <span class="tag tag-key">Prog-Death Pillar</span>
       <span class="tag tag-sub">Progressive Death Metal</span>
-      <!-- <span class="tag tag-warn">Underserved by Video</span> -->
+      <span class="tag tag-warn">Underserved</span>
     </div>
     <p class="card-note"><em>Unquestionable Presence</em> (1991) — jazz-inflected rhythms, abstract harmonic structures, death metal heaviness. Atheist created progressive death metal before anyone had the language to describe it. Their influence on everyone from Cynic to Opeth is incalculable.</p>
   </div>
