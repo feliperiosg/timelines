@@ -34,8 +34,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Libre Baskerville', Georgia, serif;
-  max-width: 725px; /* Changed for responsiveness */
-  width: 100%; /* Ensures padding on small screens */
+  max-width: 725px; /* for responsiveness */
+  width: 100%; /* for padding on small screens */
   margin: 0 auto;
   padding-bottom: 1px;
 }
@@ -64,7 +64,7 @@ body {
 }
 .hdr h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(50px, 10vw, 88px); /* Fluid size for mobile */
+  font-size: clamp(50px, 10vw, 88px); /* fluid mobile size */
   letter-spacing: 6px; line-height: .9;
   color: var(--white);
   text-shadow: 0 0 100px rgba(201,168,76,.15);
@@ -83,7 +83,7 @@ body {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 26px; /* left: calc(0px + 26px); */
+  left: 26px; /* calc(0px + 26px); */
   top: 0; bottom: 0; width: 1.5px;
   background: linear-gradient(180deg,
     transparent 0%,
@@ -98,12 +98,12 @@ body {
 .era-divider {
   position: relative;
   margin: 37px 0 17px 0;  
-  padding-left: 69px; /* padding-left: calc(58px + 11px); */
+  padding-left: 69px; /* calc(58px + 11px); */
 }
 .era-divider::before {
   content: '';
   position: absolute;
-  left: 18.5px; top: 21px;
+  left: 18.5px; top: 21.7px;
   width: 16px; height: 16px;
   background: var(--era-col);
   border-radius: 50%;
@@ -113,18 +113,31 @@ body {
 }
 .era-inner {
   border-left: 3px solid var(--era-col);
-  padding: 9px 0 10px 13px;
+  padding: 7px 1px 9px 13px;
   background: linear-gradient(90deg, rgba(255,255,255,.025) 0%, transparent 100%);
+}
+.era-head {
+  display: flex; align-items: baseline;
+  gap: 21px; flex-wrap: wrap;
 }
 .era-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px; letter-spacing: 4px;
-  color: var(--era-col); line-height: 1;
+  color: var(--era-col); line-height: normal;
 }
 .era-years {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 2px;
-  color: var(--eratxt); margin-top: 4px; display: block;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--eratxt);
+  line-height: 1.5;
+  margin-top: -15px; display: block;
+}
+.era-years_lead { color: var(--era-col, var(--muted)); opacity: 0.93; }
+.era-years_rest {
+  color: var(--eratxt);
+  background: linear-gradient(to right, var(--muted) 0%, var(--muted) 3ch, var(--eratxt) 3ch, var(--eratxt) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 .era-blurb {
   font-style: italic; font-size: 13px;
@@ -156,10 +169,13 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Visual fallback if images don't load */
+  /* visual fallback if images don't load */
   box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
-.cover img { width: 100%; height: 100%; object-fit: cover; }
+.cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
 
 .card {
   flex: 1;
@@ -176,11 +192,12 @@ body {
 }
 .card-band {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px; color: var(--white); line-height: 1;
+  font-size: 22px; color: var(--white);
+  line-height: 1;
 }
 .card-album {
   font-style: italic; font-size: 14px;
-  color: var(--gold2);
+  color: var(--gold2); margin-top: -5px;
 }
 .tag {
   display: inline-block;
@@ -190,9 +207,16 @@ body {
   margin-top: 8px; margin-right: 5px;
   text-transform: uppercase;
 }
-.tag-key { border-color: var(--gold); color: var(--gold); }
-.tag-sub { border-color: var(--muted); color: var(--muted); }
-.tag-warn { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
+.tag-key {
+  border-color: var(--gold); color: var(--gold);
+}
+.tag-sub {
+  border-color: var(--muted); color: var(--muted);
+}
+.tag-warn {
+  border-color: #c03030; color: #c03030;
+  background: rgba(192,48,48,.06);
+}
 .card-note {
   font-size: 13px; line-height: 1.6;
   color: var(--text); margin-top: 10px;
@@ -213,6 +237,7 @@ body {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 14px; letter-spacing: 2px;
   color: var(--sub-col, var(--muted));
+  text-align: center;
 }
 
 /* ═══════════════════════════ FOOTER ═══════════════════════════ */
@@ -278,7 +303,7 @@ footer {
   letter-spacing: 0.05em;
 }
 
-/* ═══════════════════════════ PRINT OPTIMIZATION ═══════════════════════════ */
+/* ═══════════════════════════ PRINT OPTIMIZATION ══════════════════════════ */
 @media print {
   body { background: #fff; color: #000; width: 100%; max-width: 100%; }
   .hdr { background: #fff; border-bottom: 2px solid #000; }
@@ -303,11 +328,17 @@ footer {
 <!-- ══════════ TIMELINE ══════════ -->
 <div class="timeline">
 
-<!-- ─────────── ERA 1 · ORIGIN ─────────── -->
+
+<!-- ────────── ERA 1 · ORIGIN ────────── -->
 <div class="era-divider" style="--era-col: var(--c-origin)">
   <div class="era-inner">
-    <span class="era-name">ORIGIN</span>
-    <span class="era-years">1969 — 1983 &thinsp;·&thinsp; Proto-Metal &amp; Prog Rock DNA</span>
+    <div class="era-head">
+      <span class="era-name">ORIGIN</span>
+      <span class="era-years">
+        <span class="era-years_lead" style="--era-col: var(--c-origin)">1969 — 1983</span>
+        <span class="era-years_rest">&thinsp;·&thinsp; Proto-Metal &amp; Prog Rock DNA</span>
+      </span>
+    </div>
     <p class="era-blurb">Progressive metal did not emerge from a vacuum. Its double helix was woven by two parallel strands: the compositional ambition of 1970s British prog rock, and the raw heaviness of early heavy metal. These are the essential ancestors.</p>
   </div>
 </div>
@@ -409,11 +440,17 @@ footer {
   </div>
 </div>
 
-<!-- ─────────── ERA 2 · BIRTH ─────────── -->
+
+<!-- ────────── ERA 2 · BIRTH ────────── -->
 <div class="era-divider" style="--era-col: var(--c-birth)">
   <div class="era-inner">
-    <span class="era-name">BIRTH</span>
-    <span class="era-years">1984 — 1989 &nbsp;·&nbsp; The Genre Is Named</span>
+    <div class="era-head">
+      <span class="era-name">BIRTH</span>
+      <span class="era-years">
+        <span class="era-years_lead" style="--era-col: var(--c-birth)">1984 — 1989</span>
+        <span class="era-years_rest">&thinsp;·&thinsp; The Genre Is Named</span>
+      </span>
+      </div>
     <p class="era-blurb">Mid-1980s American bands synthesised the prog and metal inheritances into something genuinely new — extended compositions, complex harmony, odd time signatures, and operatic singing over proper metal heaviness. Progressive metal as a distinct genre was born primarily in Connecticut and Arizona.</p>
   </div>
 </div>
@@ -529,19 +566,23 @@ footer {
       <span class="tag tag-key">Sci-Fi Prog Metal</span>
       <span class="tag tag-sub">Avant-Garde</span>
       <span class="tag tag-sub">Thrash</span>
-      <!-- <span class="tag tag-warn">Absent from Video</span> -->
+      <span class="tag tag-warn">Frequently Ommited</span>
     </div>
     <p class="card-note">From Québec — Voivod's dissonant, science-fiction-drenched prog-thrash was utterly singular. Snake's conceptual lyrics, Piggy's harmonic dissonance, and Blacky's thunderous bass created a uniquely alien world. <em>Dimension Hatross</em> (1988) is one of the genre's towering achievements in this era.</p>
   </div>
 </div>
 
 
-
-<!-- ─────────── ERA 3 · CLASSIC ERA ─────────── -->
+<!-- ──────── ERA 3 · CLASSIC ERA ──────── -->
 <div class="era-divider" style="--era-col: var(--c-classic)">
   <div class="era-inner">
-    <span class="era-name">CLASSIC ERA</span>
-    <span class="era-years">1989 — 1997 &nbsp;·&nbsp; The Genre Crystallises</span>
+    <div class="era-head">
+      <span class="era-name">CLASSIC ERA</span>
+      <span class="era-years">
+        <span class="era-years_lead" style="--era-col: var(--c-classic)">1989 — 1997</span>
+        <span class="era-years_rest">&thinsp;·&thinsp; The Genre Crystallises</span>
+      </span>
+    </div>
     <p class="era-blurb">A golden age. Progressive metal found its identity, its audience, and its canonical texts. Dream Theater arrived and defined the sound for a generation. Simultaneously, a more extreme wing fused prog with death metal — seeding the next great mutation of the genre.</p>
   </div>
 </div>
@@ -669,7 +710,7 @@ footer {
       <span class="tag tag-key">Artistic Peak</span>
       <span class="tag tag-sub">Progressive Metal</span>
     </div>
-    <p class="card-note">Where the band shed the concept-album frame and arrived at something darker and more genuinely progressive. Pink Floyd-ian atmospherics, musique concrète tape sequences, Geoff Tate on saxophone through the 8-minute title track — the most experimental record in the Queensrÿche canon. <!-- It is arguably their finest compositional hour and the closing statement of their classic period before creative decline set in permanently. --></p>
+    <p class="card-note">Where the band shed the concept-album frame and arrived at something darker and more genuinely progressive. Pink Floyd-ian atmospherics, musique concrète tape sequences, Geoff Tate on saxophone through the 8-minute title track — the most experimental record in the Queensrÿche canon.</p>
   </div>
 </div>
 
@@ -706,11 +747,17 @@ footer {
   </div>
 </div>
 
-<!-- ─────────── ERA 4 · EXPANSION ─────────── -->
+
+<!-- ──────── ERA 4 · EXPANSION ───────── -->
 <div class="era-divider" style="--era-col: var(--c-expansion)">
   <div class="era-inner">
-    <span class="era-name">EXPANSION</span>
-    <span class="era-years">1995 — 2008 &nbsp;·&nbsp; The Genre Fractures &amp; Grows</span>
+    <div class="era-head">
+      <span class="era-name">EXPANSION</span>
+      <span class="era-years">
+        <span class="era-years_lead" style="--era-col: var(--c-expansion)">1995 — 2008</span>
+        <span class="era-years_rest">&thinsp;·&thinsp; The Genre Fractures &amp; Growss</span>
+      </span>
+    </div>
     <p class="era-blurb">Progressive metal stopped being a single genre and became a family. Tool brought it to arenas. Opeth fused it with death metal and pastoral folk. Meshuggah broke rhythm itself. Porcupine Tree crossed it with post-rock and psychedelia. Pain of Salvation gave it philosophical depth. And Devin Townsend produced some of its most singular and emotionally rich work.</p>
   </div>
 </div>
@@ -809,7 +856,6 @@ footer {
     </div>
     <div class="card-tags">
       <span class="tag tag-key">Rhythmic Revolution</span>
-      <!-- <span class="tag tag-sub">Djent Progenitor</span> -->
       <span class="tag tag-sub">Proto Djent</span>
       <span class="tag tag-sub">Djent</span>
     </div>
@@ -913,12 +959,16 @@ footer {
 </div>
 
 
-
-<!-- ─────────── ERA 5 · MODERN ─────────── -->
+<!-- ────────── ERA 5 · MODERN ────────── -->
 <div class="era-divider" style="--era-col: var(--c-modern)">
   <div class="era-inner">
-    <span class="era-name">MODERN ERA</span>
-    <span class="era-years">2007 — 2025 &nbsp;·&nbsp; New Waves, Maturity &amp; Reunion</span>
+    <div class="era-head">
+      <span class="era-name">MODERN ERA</span>
+      <span class="era-years">
+        <span class="era-years_lead" style="--era-col: var(--c-modern)">2007 — 2025</span>
+        <span class="era-years_rest">&thinsp;·&thinsp; New Waves, Maturity &amp; Reunion</span>
+      </span>
+    </div>
     <p class="era-blurb">The internet era exploded the genre's reach and fragmented its identity. Djent became the defining new sub-genre of the 2010s. A second wave — European, Australian, and American — produced some of the most sophisticated progressive metal ever recorded. The late 2010s saw a post-djent maturity: emotional directness replacing technical exhibitionism. 2025 brought the genre's most anticipated reunion in decades with Dream Theater's classic lineup returning.</p>
   </div>
 </div>
@@ -1072,7 +1122,7 @@ footer {
       <span class="tag tag-sub">Djent</span>
       <span class="tag tag-sub">Progressive Metal</span>
     </div>
-    <p class="card-note">The record that stretched the djent language farthest — abandoning harsh vocals entirely, replacing rhythmic aggression with colossal atmospheric depth. <!-- Where Periphery proved djent could scale compositionally, Tesseract proved it could be genuinely moving. --> <em>Altered State</em> stands above <em>Polaris</em> in both critical consensus and compositional ambition, and remains the clearest bridge between Meshuggah's rhythmic revolution and the atmospheric, melodically rich progressive metal that defines the 2020s.</p>
+    <p class="card-note">The record that stretched the djent language farthest — abandoning harsh vocals entirely, replacing rhythmic aggression with colossal atmospheric depth. <em>Altered State</em> stands above <em>Polaris</em> in both critical consensus and compositional ambition, and remains the clearest bridge between Meshuggah's rhythmic revolution and the atmospheric, melodically rich progressive metal that defines the 2020s.</p>
   </div>
 </div>
 
@@ -1140,7 +1190,7 @@ footer {
       <span class="tag tag-sub">Progressive Rock</span>
       <span class="tag tag-sub">Progressive Metal</span>
     </div>
-    <p class="card-note">Åkerfeldt's most substantial work since <em>Blackwater Park</em> — dense, orchestral, and fully committed to the band's prog-rock pivot. Released in both Swedish and English versions, <em>In Cauda Venenum</em> demonstrated that shedding death metal's growl was not creative retreat but artistic expansion. <!-- Opeth's place in the lineage remains secure across both their phases. --></p>
+    <p class="card-note">Åkerfeldt's most substantial work since <em>Blackwater Park</em> — dense, orchestral, and fully committed to the band's prog-rock pivot. Released in both Swedish and English versions, <em>In Cauda Venenum</em> demonstrated that shedding death metal's growl was not creative retreat but artistic expansion.</p>
   </div>
 </div>
 
@@ -1161,10 +1211,9 @@ footer {
 </div>
 
 
-
 </div><!-- /timeline -->
 
-<!-- ═══════════════════════════════════════════════ FOOTER -->
+<!-- ══════════════════════════ FOOTER -->
 <footer>
   Cover Art via iTunes &amp; MusicBrainz
   <br>  
@@ -1179,19 +1228,19 @@ footer {
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════
 //  Album art — loaded from local covers/ folder.
 //  Run download_covers.py once to populate covers/.
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════
 const albums = [
-  // ── ORIGIN ──────────────────────────────────────
+  // ── ORIGIN ──────────────────────────
   { id:'cov-kc',               slug:'king_crimson-in_the_court_of_the_crimson_king'           },
   { id:'cov-sabbath',          slug:'black_sabbath-paranoid'                                  },
   { id:'cov-yes',              slug:'yes-close_to_the_edge'                                   },
   { id:'cov-rush',             slug:'rush-2112'                                               },
   { id:'cov-maiden',           slug:'iron_maiden-the_number_of_the_beast'                     },
   { id:'cov-sabbath-dio',      slug:'black_sabbath-heaven_and_hell'                           },
-  // ── BIRTH ───────────────────────────────────────
+  // ── BIRTH ───────────────────────────
   { id:'cov-fw-spectre',       slug:'fates_warning-the_spectre_within'                        },
   { id:'cov-fw-guardian',      slug:'fates_warning-awaken_the_guardian'                       },
   { id:'cov-watchtower',       slug:'watchtower-control_and_resistance'                       },
@@ -1199,7 +1248,7 @@ const albums = [
   { id:'cov-cg',               slug:'crimson_glory-transcendence'                             },
   { id:'cov-savatage',         slug:'savatage-gutter_ballet'                                  },
   { id:'cov-voivod',           slug:'voivod-dimension_hatross'                                },
-  // ── CLASSIC ─────────────────────────────────────
+  // ── CLASSIC ─────────────────────────
   { id:'cov-fw-parallels',     slug:'fates_warning-parallels'                                 },
   { id:'cov-atheist',          slug:'atheist-unquestionable_presence'                         },
   { id:'cov-death',            slug:'death-human'                                             },
@@ -1209,7 +1258,7 @@ const albums = [
   { id:'cov-qr-pl',      slug:'queensryche-promised_land'                               },
   { id:'cov-sx',               slug:'symphony_x-the_divine_wings_of_tragedy'                  },
   { id:'cov-fw-apsg',          slug:'fates_warning-a_pleasant_shade_of_gray'                  },
-  // ── EXPANSION ───────────────────────────────────
+  // ── EXPANSION ────────────────────────
   { id:'cov-dt-metro',   slug:'dream_theater-metropolis_pt_2_scenes_from_a_memory'      },                  
   { id:'cov-tool',             slug:'tool-lateralus'                                          },
   { id:'cov-pt',               slug:'porcupine_tree-fear_of_a_blank_planet'                   },
@@ -1218,10 +1267,10 @@ const albums = [
   { id:'cov-pos',              slug:'pain_of_salvation-remedy_lane'                           },
   { id:'cov-ayreon',           slug:'ayreon-into_the_electric_castle'                         },
   { id:'cov-devin',            slug:'devin_townsend-ocean_machine_biomech'                    },
-  // ── EXPANSION · POST-METAL ADJACENCY ────────────
+  // ── EXPANSION · POST-METAL ADJACENCY ───────
   { id:'cov-isis',             slug:'isis-panopticon'                                         },
   { id:'cov-mastodon',         slug:'mastodon-leviathan'                                      },
-  // ── MODERN ──────────────────────────────────────
+  // ── MODERN ──────────────────────────
   { id:'cov-btbam',            slug:'between_the_buried_and_me-colors'                        },
   { id:'cov-periphery',        slug:'periphery-juggernaut_alpha'                              },
   { id:'cov-aal',              slug:'animals_as_leaders-animals_as_leaders'                   },
@@ -1229,7 +1278,7 @@ const albums = [
   { id:'cov-leprous',          slug:'leprous-coal'                                            },
   { id:'cov-haken',            slug:'haken-the_mountain'                                      },
   { id:'cov-calihorse',        slug:'caligulas_horse-in_contact'                              },
-  // ── MODERN · POST-DJENT DECADE ──────────────────
+  // ── MODERN · POST-DJENT DECADE ────────────
   { id:'cov-leprous2',         slug:'leprous-the_congregation'                                },
   { id:'cov-tesseract',  slug:'tesseract-altered_state'                                 },
   { id:'cov-rivers',           slug:'rivers_of_nihil-where_owls_know_my_name'                 },
