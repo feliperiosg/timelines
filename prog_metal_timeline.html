@@ -4,28 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Progressive Metal — A Complete History</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link 
+href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Share+Tech+Mono&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&" rel="stylesheet">
 <style>
 /* ═══════════════════════════ CORE STYLES ═══════════════════════════ */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg:       #08080e;
+  --bg:       #0a0a0c;
   --surface:  #161618;
   --panel:    #0e0e18;
   --border:   #1e1e2e;
-  --gold:     #c9a84c;
+  --gold:     #ffb347; /* Acid Amber */
   --gold2:    #e8c96a;
-  --text:     #ccc8be;
+  --gold3:    #a89a6a;
+  --text:     #d1d1d1;
   --silent:   #55505e;
-  --muted:    #6f7a9a;
-  --white:    #f2ede4;
-  --eratxt:   #a09ab8;
-  --c-origin:    #c0402a;
-  --c-birth:     #2a6bbb;
-  --c-classic:   #2a9e5c;
-  --c-expansion: #8a2eb8;
-  --c-modern:    #bb892a;
+  --muted:    #7278a0;
+  --white:    #ffffff;
+  --eratxt:   #9898bc;
+  --c-origin:    #d65a45;
+  --c-birth:     #4f8fd6;
+  --c-classic:   #46b97a;
+  --c-expansion: #b46ad6;
+  --c-modern:    #d6a24a;
 }
 
 html { scroll-behavior: smooth; }
@@ -33,7 +35,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
   max-width: 725px; /* for responsiveness */
   width: 100%; /* for padding on small screens */
   margin: 0 auto;
@@ -75,9 +78,12 @@ body {
 .hdr h1 em { color: var(--gold); font-style: normal; }
 .hdr-sub {
   max-width: 700px; text-align: center;
-  margin: 10px auto 0;
-  font-style: italic; font-size: 15px;
-  letter-spacing: .5px;
+  margin: 11px auto 0;
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: .3px;
   color: var(--text); opacity: 0.77;
 }
   
@@ -87,7 +93,7 @@ body {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 26px; /* guide for the vertical line */
+  left: 28.4px; /* guide for the vertical line */
   top: 0; bottom: 0; width: 1.5px;
   background: linear-gradient(180deg, transparent 0%, var(--gold) 3%, var(--gold) 97%, transparent 100%);
   opacity: .17;
@@ -97,12 +103,12 @@ body {
 .era-divider {
   position: relative;
   margin: 37px 0 17px 0;  
-  padding-left: 69px;
+  padding-left: 70px;
 }
 .era-divider::before {
   content: '';
   position: absolute;
-  left: 18.4px; top: 21.7px;
+  left: 20.8px; top: 21.7px;
   width: 16px; height: 16px;
   background: var(--era-col);
   border-radius: 50%;
@@ -115,45 +121,47 @@ body {
   padding: 7px 1px 9px 13px;
   background: linear-gradient(90deg, rgba(255,255,255,.025) 0%, transparent 100%);
 }
-.era-head { display: flex; align-items: baseline; gap: 21px; flex-wrap: wrap; }
+.era-head { display: flex; align-items: baseline; gap: 19px; flex-wrap: wrap; }
 .era-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px; letter-spacing: 4px;
   color: var(--era-col); line-height: normal;
 }
 .era-years {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; letter-spacing: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; letter-spacing: 0.5px;
   color: var(--eratxt);
   line-height: 1.5;
   margin-top: -15px; display: block;
 }
 .era-years_lead {
-  background: linear-gradient(to right, var(--era-col) 0%, var(--era-col) 17ch, var(--silent) 17ch, var(--silent) 100%);
+  background: linear-gradient(to right, var(--era-col) 0%, var(--era-col) 13ch, var(--silent) 13ch, var(--silent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent; opacity: 0.93;
   /* ensure text visible if background-clip fails */
   display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
 }
 .era-years_rest { color: var(--eratxt, var(--muted)); display: inline-block; }
 .era-blurb {
-  font-style: italic; font-size: 13px;
+  font-style: normal; font-size: 13px;
   color: var(--eratxt); margin-top: 8px;
   line-height: 1.65; max-width: 550px;
+  font-family: 'Inter', sans-serif; font-weight: 300;
 }
 
 /* ═══════════════════════════ ENTRY ═══════════════════════════ */
 .entry { display: flex; align-items: flex-start; padding: 8px 0; }
 .entry-year {
-  flex-shrink: 0; width: 58px;
+  flex-shrink: 0; width: 59px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; color: var(--era-col);
+  font-size: 12px; color: var(--era-col);
 }
 .cover {
   flex-shrink: 0; width: 83px; height: 83px;
   border-radius: 3px; border: 1px solid var(--border);
-  background: var(--surface); margin: 0 12px 0 11px;
+  background: var(--surface); margin: 0 12px 0 10px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
   /* visual fallback if images don't load */
@@ -171,14 +179,20 @@ body {
 }
 .card-head { display: flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
 .card-band { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--white); line-height: 1; }
-.card-album { font-style: italic; font-size: 14px; color: var(--gold2); margin-top: -5px; }
+.card-album {
+  font-family: 'DM Mono', monospace;
+  font-style: normal; font-size: 12px;
+  color: var(--gold); margin-top: -7px;
+  letter-spacing: 0.1px;
+  /* text-transform: uppercase; */
+ }
 
 .tag {
   display: inline-block; font-family: 'Share Tech Mono', monospace;
   font-size: 9px; padding: 2px 8px; border: 1px solid; border-radius: 2px;
   margin-top: 8px; margin-right: 5px; text-transform: uppercase;
 }
-.tag-key { border-color: var(--gold); color: var(--gold); }
+.tag-key { border-color: var(--gold2); color: var(--gold2); opacity: 0.99; }
 .tag-sub { border-color: var(--muted); color: var(--muted); }
 .tag-warn { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
 
@@ -202,14 +216,14 @@ footer {
 }
 .collab-logo { display: inline-flex; align-items: center; gap: 8px; }
 .collab-text {
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+  font-family: 'DM Mono', monospace; font-size: 0.6rem;
   letter-spacing: 0.12em; color: var(--silent); text-align: right;
   line-height: 1.5; display: inline-flex; flex-direction: column;
   justify-content: center; margin-top: 8px;
 }
 .collab-badge {
   display: inline-flex; border: 1px solid var(--border); border-radius: 5px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
   text-transform: uppercase; margin-top: 8px; background: var(--surface);
   overflow: hidden; line-height: 1.5;
 }
@@ -222,18 +236,25 @@ footer {
   body { 
     background: #fff !important;
     color: #000 !important; 
-    /* removes the 40px gap specifically for the PDF/print output */
+    /* removes the 40px gap for the print output */
     padding-bottom: 1px !important; 
     width: 100%; 
     max-width: 100%; 
   }
   
-  /* Reset special text effects that fail on PDF engines */
-  .era-years_rest { background: none !important; -webkit-background-clip: initial !important; color: #555 !important; }
+  /* reset special text effects fail on PDF engs */
+  .era-years_lead { 
+    background: none !important; 
+    -webkit-background-clip: initial !important; 
+    background-clip: initial !important;
+    color: #000 !important; /* ensures year shows */
+  }
+  .era-years_rest { color: #555 !important; }
+  
   .hdr h1 { text-shadow: none !important; color: #000 !important; }
   .hdr h1 em { color: #555 !important; }
   
-  /* Retain the vertical timeline visual structure */
+  /* retain vertical timeline visual structure */
   .timeline::before { 
     display: block !important; 
     background: #ddd !important; 
@@ -244,14 +265,16 @@ footer {
   .card { 
     background: #fff !important; 
     border: 1px solid #eee !important; 
-    border-left: 4px solid #333 !important; /* Visual indicator for print */
+    border-left: 4px solid #333 !important; /* visual indicator for print */
     page-break-inside: avoid; 
     box-shadow: none !important;
   }
   
+  /* ensures tags don't print with dark backg-s */
+  .tag { border: 1px solid #000 !important; color: #000 !important; background: transparent !important; }
+  
   .hdr { background: #fff !important; border-bottom: 2px solid #000 !important; }
   .hdr::after { display: none; }
-  .tag { border: 1px solid #000 !important; color: #000 !important; }
   .cover { border: 1px solid #eee !important; box-shadow: none !important; }
 }
 </style>
@@ -388,7 +411,7 @@ footer {
       <span class="era-name">BIRTH</span>
       <span class="era-years">
         <span class="era-years_lead" style="--era-col: var(--c-birth)">1984 — 1989 &#8202;·&#8202; </span>
-        <span class="era-years_rest">The Genre Is Named</span>
+        <span class="era-years_rest">The Genre is Named</span>
       </span>
       </div>
     <p class="era-blurb">Mid-1980s American bands synthesised the prog and metal inheritances into something genuinely new — extended compositions, complex harmony, odd time signatures, and operatic singing over proper metal heaviness. Progressive metal as a distinct genre was born primarily in Connecticut and Arizona.</p>
@@ -503,7 +526,7 @@ footer {
       <span class="card-album">Killing Technology · Dimension Hatross · Nothingface</span>
     </div>
     <div class="card-tags">
-      <span class="tag tag-key">Sci-Fi Prog Metal</span>
+      <span class="tag tag-sub">Sci-Fi Progressive Metal</span>
       <span class="tag tag-sub">Avant-Garde</span>
       <span class="tag tag-sub">Thrash</span>
       <span class="tag tag-warn">Frequently Ommited</span>
@@ -695,7 +718,7 @@ footer {
       <span class="era-name">EXPANSION</span>
       <span class="era-years">
         <span class="era-years_lead" style="--era-col: var(--c-expansion)">1995 — 2008 &#8202;·&#8202; </span>
-        <span class="era-years_rest">The Genre Fractures &amp; Growss</span>
+        <span class="era-years_rest">The Genre Fractures &amp; Grows</span>
       </span>
     </div>
     <p class="era-blurb">Progressive metal stopped being a single genre and became a family. Tool brought it to arenas. Opeth fused it with death metal and pastoral folk. Meshuggah broke rhythm itself. Porcupine Tree crossed it with post-rock and psychedelia. Pain of Salvation gave it philosophical depth. And Devin Townsend produced some of its most singular and emotionally rich work.</p>
