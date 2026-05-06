@@ -148,7 +148,7 @@ body {
   font-style: normal; font-size: 13px;
   color: var(--eratxt); margin-top: 8px;
   line-height: 1.65; max-width: 550px;
-  font-family: 'Inter', sans-serif; font-weight: 300;
+  /* font-family: 'Inter', sans-serif; font-weight: 300; */
 }
 
 /* ═══════════════════════════ ENTRY ═══════════════════════════ */
@@ -233,49 +233,71 @@ footer {
 
 /* ═══════════════════════════ PRINT OPTIMIZATION ══════════════════════════ */
 @media print {
+  /* 1. FORCE THE BROWSER TO RENDER BACKGROUND COLORS/GRADIENTS */
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   body { 
-    background: #fff !important;
-    color: #000 !important; 
-    /* removes the 40px gap for the print output */
+    background: var(--bg) !important; /* Keeps your Ink Black background */
+    color: var(--text) !important; 
     padding-bottom: 1px !important; 
-    width: 100%; 
-    max-width: 100%; 
+    width: 725px !important; /* Keeps it from stretching/narrowing */
+    margin: 0 auto !important;
   }
-  
-  /* reset special text effects fail on PDF engs */
-  .era-years_lead { 
-    background: none !important; 
-    -webkit-background-clip: initial !important; 
-    background-clip: initial !important;
-    color: #000 !important; /* ensures year shows */
-  }
-  .era-years_rest { color: #555 !important; }
-  
-  .hdr h1 { text-shadow: none !important; color: #000 !important; }
-  .hdr h1 em { color: #555 !important; }
-  
-  /* retain vertical timeline visual structure */
+
+  /* 2. RE-ESTABLISH THE TIMELINE LINE */
   .timeline::before { 
     display: block !important; 
-    background: #ddd !important; 
+    background: linear-gradient(180deg, transparent 0%, var(--gold) 3%, var(--gold) 97%, transparent 100%);
+    opacity: 0.17 !important;
+    width: 1.5px !important;
+    height: 100% !important;
+  }
+
+  /* 3. RE-ESTABLISH THE TIMELINE CIRCLES (ERA DOTS) */
+  .era-divider::before {
+    background: var(--era-col) !important;
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--era-col) !important;
     opacity: 1 !important;
-    width: 1px !important;
+    visibility: visible !important;
+    break-inside: avoid;
   }
-  
+
+  /* 4. KEEP THE HEADER & CARDS DARK */
+  .hdr { background: linear-gradient(175deg, #110818 0%, #08080e 60%); !important; }
   .card { 
-    background: #fff !important; 
-    border: 1px solid #eee !important; 
-    border-left: 4px solid #333 !important; /* visual indicator for print */
+    background: var(--panel) !important; 
+    /* 1. Apply the thin border to all sides first */
+    border: 1px solid var(--border) !important; 
+    /* 2. Re-apply the thick left accent specifically so it's not overwritten */
+    /* border-left: 3px solid var(--era-col) !important; */
+    border-left: 3px solid color-mix(in srgb, var(--era-col) 70%, transparent) !important;
     page-break-inside: avoid; 
-    box-shadow: none !important;
+    break-inside: avoid;
   }
+
+  /* Update: respect the era-specific color code for lead years in print */
+  .era-years_lead { 
+    color: var(--era-col) !important; 
+    background: none !important; 
+    -webkit-background-clip: initial !important; 
+    display: inline-block !important;
+    opacity: 0.93 !important;
+  }
+
+  /* Ensure sub-headers and tags keep their visual identity */
+  .sub-header-line { background: var(--sub-col) !important; opacity: 0.45 !important; }
+  .tag-warn { border-color: #c03030 !important; color: #c03030 !important; background: rgba(192,48,48,.06) !important; 
+  }
+  .collab-badge { background: var(--surface) !important; border-color: var(--border) !important; }
   
-  /* ensures tags don't print with dark backg-s */
-  .tag { border: 1px solid #000 !important; color: #000 !important; background: transparent !important; }
-  
-  .hdr { background: #fff !important; border-bottom: 2px solid #000 !important; }
-  .hdr::after { display: none; }
-  .cover { border: 1px solid #eee !important; box-shadow: none !important; }
+  /* Prevent page-breaks in the middle of entries */
+  .entry, .era-divider, .sub-header { page-break-inside: avoid !important; break-inside: avoid !important; }
+
+  /* Hide any potential browser-added headers/footers (date/url) */
+  @page { margin: 0; size: auto; } /* size: 192mm 2622mm; */
 }
 </style>
 </head>
@@ -1186,6 +1208,8 @@ footer {
       <span class="collab-falo">falo</span>
       <span class="collab-plus">+</span>
       <span class="collab-claude">claude</span>
+      <span class="collab-plus">+</span>
+      <span class="collab-claude">gemini</span>
     </div>
   </div>
 </footer>
