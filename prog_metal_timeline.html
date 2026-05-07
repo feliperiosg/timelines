@@ -4,30 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Progressive Metal — A Complete History</title>
-<link 
-href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Share+Tech+Mono&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=Share+Tech+Mono&family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400" rel="stylesheet">
 <style>
 /* ═══════════════════════════ CORE STYLES ═══════════════════════════ */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg:       #0a0a0c;
-  --surface:  #161618;
-  --panel:    #0e0e18;
-  --border:   #1e1e2e;
-  --gold:     #ffb347; /* Acid Amber */
-  --gold2:    #e8c96a;
+  --bg:       #050505; /* Ink Black */
+  --surface:  #0f1115;
+  --panel:    #14171c;
+  --border:   #1f242d;
+  --gold:     #4facfe; /* Electric Cobalt */
+  --gold2:    #00f2fe; /* Cyan highlight */
   --gold3:    #a89a6a;
-  --text:     #d1d1d1;
-  --silent:   #55505e;
-  --muted:    #7278a0;
-  --white:    #ffffff;
-  --eratxt:   #9898bc;
-  --c-origin:    #d65a45;
-  --c-birth:     #4f8fd6;
-  --c-classic:   #46b97a;
-  --c-expansion: #b46ad6;
-  --c-modern:    #d6a24a;
+  --text:     #e0e0e0;
+  --silent:   #4a5568;
+  --muted:    #9fb2c7;
+  --white:    #f7fafc;
+  --eratxt:   #a09ab8;
+  --c-origin:    #3f78c8;
+  --c-birth:     #4facfe;
+  --c-classic:   #38cfd9;
+  --c-expansion: #7a7cf0;
+  --c-modern:    #00e0ff;
 }
 
 html { scroll-behavior: smooth; }
@@ -35,8 +35,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 300;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  /* font-family: 'Inter', system-ui, sans-serif; font-weight: 300; */
   max-width: 725px; /* for responsiveness */
   width: 100%; /* for padding on small screens */
   margin: 0 auto;
@@ -71,11 +71,11 @@ body {
 .hdr h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(50px, 10vw, 88px); /* fluid mobile size */
-  letter-spacing: 6px; line-height: .9;
-  color: var(--white);
+  line-height: .9; color: var(--white);
+  letter-spacing: -2.3px; /* tighter "Brutalist" */
+  filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.2));
   text-shadow: 0 0 100px rgba(201,168,76,.15);
 }
-.hdr h1 em { color: var(--gold); font-style: normal; }
 .hdr-sub {
   max-width: 700px; text-align: center;
   margin: 11px auto 0;
@@ -138,17 +138,17 @@ body {
   background: linear-gradient(to right, var(--era-col) 0%, var(--era-col) 13ch, var(--silent) 13ch, var(--silent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; opacity: 0.93;
+  color: transparent; opacity: 0.97;
   /* ensure text visible if background-clip fails */
-  display: inline-block;
+  /* display: inline-block; */
+  text-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
   font-family: 'Share Tech Mono', monospace;
 }
-.era-years_rest { color: var(--eratxt, var(--muted)); display: inline-block; }
+.era-years_rest { color: var(--white, var(--muted)); display: inline-block; }
 .era-blurb {
   font-style: normal; font-size: 13px;
-  color: var(--eratxt); margin-top: 8px;
+  color: var(--muted); margin-top: 8px;
   line-height: 1.65; max-width: 550px;
-  /* font-family: 'Inter', sans-serif; font-weight: 300; */
 }
 
 /* ═══════════════════════════ ENTRY ═══════════════════════════ */
@@ -182,7 +182,7 @@ body {
 .card-album {
   font-family: 'DM Mono', monospace;
   font-style: normal; font-size: 12px;
-  color: var(--gold); margin-top: -7px;
+  color: var(--gold2); margin-top: -7px;
   letter-spacing: 0.1px;
   /* text-transform: uppercase; */
  }
@@ -192,7 +192,7 @@ body {
   font-size: 9px; padding: 2px 8px; border: 1px solid; border-radius: 2px;
   margin-top: 8px; margin-right: 5px; text-transform: uppercase;
 }
-.tag-key { border-color: var(--gold2); color: var(--gold2); opacity: 0.99; }
+.tag-key { border-color: var(--gold); color: var(--gold); opacity: 0.99; }
 .tag-sub { border-color: var(--muted); color: var(--muted); }
 .tag-warn { border-color: #c03030; color: #c03030; background: rgba(192,48,48,.06); }
 
@@ -239,6 +239,13 @@ footer {
     print-color-adjust: exact !important;
   }
 
+  /* 5. REMOVE BLUR SOURCES */
+  .hdr h1 {
+    filter: none !important;      /* removes the rasterization cause */
+    text-shadow: none !important; /* ensures text remains vector-sharp */
+    color: var(--white) !important;
+  }
+  
   body { 
     background: var(--bg) !important; /* Keeps your Ink Black background */
     color: var(--text) !important; 
@@ -266,7 +273,7 @@ footer {
   }
 
   /* 4. KEEP THE HEADER & CARDS DARK */
-  .hdr { background: linear-gradient(175deg, #110818 0%, #08080e 60%); !important; }
+  .hdr { background: linear-gradient(175deg, #110818 0%, #08080e 60%) !important; }
   .card { 
     background: var(--panel) !important; 
     /* 1. Apply the thin border to all sides first */
@@ -297,7 +304,7 @@ footer {
   .entry, .era-divider, .sub-header { page-break-inside: avoid !important; break-inside: avoid !important; }
 
   /* Hide any potential browser-added headers/footers (date/url) */
-  @page { margin: 0; size: auto; } /* size: 192mm 2622mm; */
+  @page { margin: 0; size: auto; } /* size: 192mm 2738mm; */
 }
 </style>
 </head>
@@ -1207,9 +1214,7 @@ footer {
     <div class="collab-badge">
       <span class="collab-falo">falo</span>
       <span class="collab-plus">+</span>
-      <span class="collab-claude">claude</span>
-      <span class="collab-plus">+</span>
-      <span class="collab-claude">gemini</span>
+      <span class="collab-claude">clau/mini</span>
     </div>
   </div>
 </footer>
