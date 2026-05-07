@@ -239,6 +239,13 @@ footer {
     print-color-adjust: exact !important;
   }
 
+  /* 5. REMOVE BLUR SOURCES */
+  .hdr h1 {
+    filter: none !important;      /* removes the rasterization cause */
+    text-shadow: none !important; /* ensures text remains vector-sharp */
+    color: var(--white) !important;
+  }
+  
   body { 
     background: var(--bg) !important; /* Keeps your Ink Black background */
     color: var(--text) !important; 
@@ -266,7 +273,7 @@ footer {
   }
 
   /* 4. KEEP THE HEADER & CARDS DARK */
-  .hdr { background: linear-gradient(175deg, #110818 0%, #08080e 60%); !important; }
+  .hdr { background: linear-gradient(175deg, #110818 0%, #08080e 60%) !important; }
   .card { 
     background: var(--panel) !important; 
     /* 1. Apply the thin border to all sides first */
@@ -1207,9 +1214,7 @@ footer {
     <div class="collab-badge">
       <span class="collab-falo">falo</span>
       <span class="collab-plus">+</span>
-      <span class="collab-claude">claude</span>
-      <span class="collab-plus">+</span>
-      <span class="collab-claude">gemini</span>
+      <span class="collab-claude">clau/mini</span>
     </div>
   </div>
 </footer>
